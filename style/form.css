@@ -1,0 +1,354 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #CFCFCD;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #000500;
+    border-radius: 50px;
+}
+
+/* :root {
+    --primaryy: #4e73df !important;
+    --success: #1cc88a !important;
+} */
+
+/* bg-primaryy {
+    background-color: var(--primaryy);
+}
+
+bg-success {
+    background-color: var(--success);
+} */
+
+
+
+label[data-placeholder] {
+    font-size: 20px;
+}
+
+select::-webkit-scrollbar {
+    width: 10px;  
+}
+
+select::-webkit-scrollbar-track {
+background: #4e73df;     
+}
+
+select::-webkit-scrollbar-thumb {
+background-color: #CFCFCD;    
+border-radius: 20px;       
+border: 3px solid #4e73df;  
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+.row {
+    justify-content: center;
+}
+
+.tab {
+    display:none;
+}
+/* ARREGLAR -> LOS 2 EN LA MISMA CLASE */
+input.invalid {
+    background-color: #ffdddd;
+}
+
+input.valid {
+    background-color: white;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.step.incomplete {
+    background-color: red;
+}
+
+.step.finish {
+    background-color: #04AA6D !important;
+}
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+label {
+    display:flex;
+}
+
+select {
+    border:none;
+    background:none;
+    outline:none;
+    margin-top: 15px;
+    width:100%;
+}
+
+input {
+    border:none;
+    /* background:none; */
+    outline:none;
+    margin-top:15px;
+    width:100%;
+}
+
+form {
+    margin-bottom:5%;
+}
+
+.select-form {
+    position:relative;
+    border-bottom: 2px solid black;
+    border-radius: 3px;
+    position:relative;
+    margin: 50px 0;
+}
+
+.select-form select {
+    width:100%;
+    padding:0 5px;
+}
+
+.form-row {
+    justify-content: center !important;
+    margin-right: -50px;
+    margin-left: -50px;
+
+}
+
+.card-body {
+    padding:0;
+    padding-top: 1.25rem !important;
+}
+
+/* .division {
+    background-color:#4e73df;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    max-width:0.25%;  
+    height: auto;      
+    margin-left:5%;
+    margin-right:5%;
+} */
+
+.input-form {
+    position:relative;
+    margin: 50px 0;
+}
+
+.input-form input {
+    width:100%;
+    padding:0 5px;
+    /* background:none; */
+    outline:none;
+}
+
+.form-block {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    width: 75%;
+    position: relative;
+}
+
+.form-block:last-child {
+    margin-bottom: 0;
+}
+
+/* INPUT TEXT */
+
+.form-block input[type=text] {
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 2px solid black;
+    border-radius: 3px;
+    transition: all 0.5s ease-in-out;
+    outline: 0;
+}
+
+.form-block input[type=text] + label[data-placeholder] {
+    pointer-events: none;
+}
+.form-block input[type=text] + label[data-placeholder]:after {
+    content: attr(data-placeholder);
+    display: block;
+    position:absolute;
+    top: -10%;
+    left: 0.5rem;
+    transform: translate(-2.5%, 50%);
+    transition: all 0.75s ease-in-out;
+    padding: 0 0.25rem;
+}
+
+.form-row input[type=text]:focus, .form-row input[type=text]:valid {
+    border-bottom: 2px solid #4e73df;
+}
+
+.form-block input[type=text]:focus + label[data-placeholder]:after, .form-block input[type=text]:valid + label[data-placeholder]:after {
+    transform: translate(-7.5%, -25%) scale(0.9, 0.9);
+    color: #4e73df;
+}
+
+/* INPUTS NUMBER */
+
+.form-block input[type=number] {
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 2px solid black;
+    border-radius: 3px;
+    transition: all 0.5s ease-in-out;
+    outline: 0;
+}
+
+.form-block input[type=number] + label[data-placeholder] {
+    pointer-events: none;
+}
+
+.form-block input[type=number] + label[data-placeholder]:after {
+    content: attr(data-placeholder);
+    display: block;
+    position:absolute;
+    top: -15%;
+    left: 0.5rem;
+    transform: translate(-2.5%, 50%);
+    transition: all 0.75s ease-in-out;
+    padding: 0 0.25rem;
+}
+
+.form-row input[type=number]:focus, .form-row input[type=number]:valid {
+    border-bottom: 2px solid #4e73df;
+}
+
+.form-block input[type=number]:focus + label[data-placeholder]:after, .form-block input[type=number]:valid + label[data-placeholder]:after {
+    transform: translate(-7.5%, -25%) scale(0.9, 0.9);
+    color: #4e73df;
+    background-color: none;
+}
+
+.divisor {
+    border: 1px solid #4e73df;
+    border-radius: 2px;
+    margin: 50px auto 50px auto;
+    position: relative;
+    width: 75%;
+    width: auto;
+}
+
+#adv {
+    display: none;
+    color: #e74a3b;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.btn-prevBtn {
+    background-color: #909397;
+    color: white;
+}
+
+.btn-nextBtn {
+    background-color: #1cc88a;
+    color: white;
+}
+
+.btn-plus {
+    display: inline-block;
+}
+
+/* Double line */
+
+.double-line input[type=text] + label[data-placeholder]:after {
+    content: attr(data-placeholder);
+    display: block;
+    position:absolute;
+    top: -20%;
+    left: 0.5rem;
+    transform: translate(-2.5%, -40%);
+    transition: all 0.75s ease-in-out;
+    padding: 0 0.25rem;
+    margin-top: 10px;
+}
+
+.double-line input[type=text]:focus + label[data-placeholder]:after, .double-line input[type=text]:valid + label[data-placeholder]:after {
+    transform: translate(-7%, -70%) scale(0.9, 0.9);
+    color: #4e73df;
+    background-color: none;
+}
+
+.double-line input[type=number] + label[data-placeholder]:after {
+    content: attr(data-placeholder);
+    display: block;
+    position:absolute;
+    top: -10%;
+    left: 0.5rem;
+    transform: translate(-2.5%, -40%);
+    transition: all 0.75s ease-in-out;
+    padding: 0 0.25rem;
+    margin-top: 10px;
+}
+
+.double-line input[type=number]:focus + label[data-placeholder]:after, .double-line input[type=number]:valid + label[data-placeholder]:after {
+    transform: translate(-7%, -70%) scale(0.9, 0.9);
+    color: #4e73df;
+    background-color: none;
+}
+@media (max-width:1865px) {
+
+    .double-line input[type=text] + label[data-placeholder]:after {
+        content: attr(data-placeholder);
+        display: block;
+        position:absolute;
+        top: -10%;
+        left: 0.5rem;
+        transform: translate(-2.5%, -40%);
+        transition: all 0.75s ease-in-out;
+        padding: 0 0.25rem;
+        margin-top: 10px;
+    }
+    
+    .double-line input[type=text]:focus + label[data-placeholder]:after, .double-line input[type=text]:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -70%) scale(0.9, 0.9);
+        color: #4e73df;
+        background-color: none;
+    }
+
+    .double-line input[type=number] + label[data-placeholder]:after {
+        content: attr(data-placeholder);
+        display: block;
+        position:absolute;
+        top: -10%;
+        left: 0.5rem;
+        transform: translate(-2.5%, -40%);
+        transition: all 0.75s ease-in-out;
+        padding: 0 0.25rem;
+        margin-top: 10px;
+    }
+    
+    .double-line input[type=number]:focus + label[data-placeholder]:after, .double-line input[type=number]:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -70%) scale(0.9, 0.9);
+        color: #4e73df;
+        background-color: none;
+    }
+}

@@ -1,65 +1,37 @@
 var boton = document.getElementById('newUser');
-boton.addEventListener('click', newUser);
+var inputsArray,inputs;
 
+boton.addEventListener('click', newUser);
 function newUser(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
-
     var env = document.getElementById('send');
     var send = document.createElement("div");
     send.innerHTML =
     `<div class="divisor"></div>
-    <div class="mb-2 input-form form-block modal-input-form">
-    <input type="text" name="nom_user" autocomplete="email" required>
+    <div class="mb-2 input-form form-block">
+    <input type="text" name="nom_user" autocomplete="name" required>
     <label alt="Label" data-placeholder="Nombre completo"></label>
     </div>
-    <div class="mb-2 input-form form-block modal-input-form">
+    <div class="mb-2 input-form form-block">
     <input type="text" name="email_personal_user" autocomplete="email" required>
     <label alt="Label" data-placeholder="Correo electronico personal"></label>
     </div>
-    <div class="mb-2 input-form form-block modal-input-form">
-    <input type="text" name="dni_user" autocomplete="email" required>
+    <div class="mb-2 input-form form-block">
+    <input type="text" name="dni_user" autocomplete="off" required>
     <label alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
     </div>`;
 
-    return env.appendChild(send);
-
+    env.appendChild(send);
+    return showTab(currentTab);
 }
 
-var currentTab = 0;
+var currentTab = 2;
 var tab = document.getElementsByClassName("tab");
 var validate = false;
 var advState = false;
 
-var inputs = tab[currentTab].getElementsByTagName("input");
-var inputsArray = Array.from(inputs);
-inputsArray.forEach(input => {
-    input.addEventListener("keyup",input => {
-        var valid= true
-        if (validate) {
-            if (input.target.value == "" || input.target.value == " " ) {
-                input.target.style.backgroundColor = "#ffdddd";
-            } else {
-                input.target.style.backgroundColor = "white";
-            }
-    
-            for (i = 0; i < inputs.length; i++) {
-                if (inputs[i].value == "" || inputs[i].value == " " ) valid = false; 
-            }
-            if (valid) {
-                home.style.color = "black"; 
-                adv.style.display = "none";
-                var step = document.getElementsByClassName("step")[currentTab];
-                step.className += " finish";
-                advState = false;
-            }
-        }
-
-    });
-});
-
 showTab(currentTab);
-
 
 function showTab (n) {
     tab[n].style.display= "block";
@@ -76,7 +48,33 @@ function showTab (n) {
         document.getElementById("nextBtn").innerHTML = "Siguiente";
     }
 
+    inputs = tab[currentTab].getElementsByTagName("input");
+    inputsArray = Array.from(inputs);
+    inputsArray.forEach(input => {
+        input.addEventListener("keyup",input => {
+            var valid= true;
+            if (validate) {
+                if (!input.target.value) {
+                    input.target.style.backgroundColor = "#ffdddd";
+                } else {
+                    input.target.style.backgroundColor = "white";
+                }
+        
+                for (i = 0; i < inputs.length; i++) {
+                    if (inputs[i].value == "" || inputs[i].value == " " ) valid = false; 
+                }
+                if (valid) {
+                    home.style.color = "black"; 
+                    adv.style.display = "none";
+                    var step = document.getElementsByClassName("step")[currentTab];
+                    step.className += " finish";
+                    advState = false;
+                }
+            }
+        });
+    });
     stepIndicator(n);
+
 }
 
 function nextPrev(n) {
@@ -85,6 +83,7 @@ function nextPrev(n) {
     if (n == 1 && !formValidate()) return false;
 
     tab[currentTab].style.display = "none";
+
     currentTab = currentTab + n;
     validate = false;
 
@@ -105,7 +104,7 @@ function formValidate () {
     inputs = tab[currentTab].getElementsByTagName("input");
 
     for (i = 0; i < inputs.length; i++) {
-        if (inputs[i].value == "" || inputs[i].value == " ") {
+        if (!inputs[i].value) {
             inputs[i].style.backgroundColor = "#ffdddd";
 
             valid = false;
@@ -129,7 +128,6 @@ function formValidate () {
         document.getElementsByClassName("step")[currentTab].className += " incomplete";
     }
 
-
     return valid;
 }
 
@@ -139,6 +137,6 @@ function stepIndicator(n) {
         step[i].className = step[i].className.replace(" active", " ")
     }
 
+
     step[n].className += " active";
-    console.log("stepIndicator");
 }

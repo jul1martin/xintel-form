@@ -12,28 +12,29 @@
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="style/form.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200&display=swap" rel="stylesheet">
+
+    
+
 </head>
-<body>
+<body style="background-color:#CFCFCD; color:#000500">
 
 <div id="beginning">
-    <div class="card shadow mb-6" style="margin-top:50px;margin-bottom:127px; width:75%; margin-left:auto;margin-right:auto;">
-        <h1 class="text-center" style="margin-top:5%;font-weight: bold;" id="home">Formulario de ingreso | XINTEL</h1>
-        <p class="text-center" id="adv">Rellene todos los campos</p>
+    <div class="card shadow mb-6" style="margin-top:50px;margin-bottom:50px; width:75%; margin-left:auto;margin-right:auto;">
+        <h1 class="text-center" style="margin-top:5%;" id="home">Formulario de ingreso | XINTEL</h1>
+        <p class="text-center" style="margin-top:1%;" id="adv">Rellene todos los campos</p>
         <div style="text-align:center;margin-top:40px;">
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
         </div>
+
         <div class="card-body">
             <div class="form-container">
-                <form action="/new" method="POST" autocomplete="off" style="margin:0;" id="ingreso">
+                <form action="/nuevo" method="POST" autocomplete="off" style="margin:0;" id="ingreso">
                     <div class="row">
                         <div class="col-md-8 mt-2">
                             <div class="tab">
-                                <p class="text-center" style="font-size: 25px;">Datos inmobiliaria</p>
+                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos inmobiliaria</p>
                                 <div class="mb-2 input-form form-block">
                                     <input type="text" name="nom_imb" autocomplete="organization-title" required>
                                     <label alt="Label" data-placeholder="Nombre de la inmobiliaria"></label>
@@ -69,7 +70,6 @@
                     <div class="row">
                         <div class="col-md-8 mt-2">             
                             <div class="tab">
-                                
                                 <p class="text-center" style="margin-top:1%;font-size: 25px;">Contratos</p>
                                 <div class="mb-2 input-form form-block">
                                     <input name="cuantas_propiedades" type="number"   required>
@@ -79,7 +79,7 @@
                                     <input name="cuantas_propiedades" type="number"`   required>
                                     <label alt="Label" data-placeholder="¿Cuántos contratos tiene actualmente la empresa?"></label>
                                 </div>
-                                <div class="mb-2 select-form form-block">
+                                <div class="mb-2 select-form ">
                                     <select class="" name="servicios" id="transformEstatic" required>
                                         <option value="null">Sistemas que adquiere.</option>
                                         <option value="Leasing">Xintel Leasing.</option>
@@ -87,7 +87,7 @@
                                         <option value="ambos_servicios">Ambos sistemas.</option>
                                     </select>  
                                 </div>
-                                <div class="mb-2 select-form form-block">
+                                <div class="mb-2 select-form ">
                                     <select class="" name="pag_web" id="transformEstatic" required>
                                         <option value="null">Pagina Web.</option>
                                         <option value="Xinte_web">En proceso con Xintel.</option>
@@ -96,7 +96,8 @@
                                     </select>  
                                 </div>
                                 <!-- ACA IRIA QUE SI NECESITA INTEGRARLA SE LA PEDIREMOS -->
-                                <div class="mb-2 select-form form-block">
+
+                                <div class="mb-2 select-form ">
                                     <select class="" name="migraciones" id="transformEstatic" required>
                                         <option value="null">Precisa realizar migraciones?</option>
                                         <option value="No">No, las cargaremos manualmente.</option>
@@ -104,7 +105,7 @@
                                         <option value="Si_mercadolibre">Si, desde Mercado Libre.</option>
                                     </select>  
                                 </div>
-                                <div class="mb-2 select-form form-block">
+                                <div class="mb-2 select-form ">
                                     <label for="">Selecciona una opción (Apreta control + opcion que elijas)</label>
                                     <select name="portales" id="" multiple required>
                                         <option value="zonaprop">Zonaprop.</option>
@@ -121,7 +122,7 @@
                             <div class="tab">
                                 <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos de los usuarios a ingresar al panel</p>
                                 <div id="send">
-                                    <div class="mb-2 input-form form-block">
+                                        <div class="mb-2 input-form form-block">
                                         <input type="text" name="nom_user" autocomplete="name" required>
                                         <label alt="Label" data-placeholder="Nombre completo"></label>
                                         </div>
@@ -141,7 +142,7 @@
                             </div>    
                         </div>
                     </div>
-                    <div style="overflow:auto; margin: 50px 25px 25px 0px;" >
+                    <div style="overflow:auto; margin: 50px 10px 25px 0px;" >
                         <div style="float:right;">
                             <a href="#beginning"><button type="button"  class="btn btn-prevBtn" id="prevBtn" onclick="nextPrev(-1)">Anterior</button></a>
                             <a href="#beginning"><button type="button" class="btn btn-nextBtn" id="nextBtn" onclick="nextPrev(1)">Siguiente</button></a>
@@ -177,9 +178,6 @@
         </div>
     </div>
 </div> -->
-<footer class="bg-primary">
-    <img src="assets/logo.png" class="img-fluid" alt="Logo de Xintel" style="margin:25px;">
-</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
@@ -196,5 +194,10 @@
     
 </script>
 <script src="form.js"></script>
+
+<footer>
+<div class="card-footer bg-primary"><center><img src="assets/logo.png" class="img-fluid" alt="Logo de Xintel" style="margin:25px;"></center></div>
+</footer>
+
 </body>
 </html>

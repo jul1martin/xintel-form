@@ -85,7 +85,6 @@ function nextPrev(n) {
     if (n == 1 && !formValidate()) return false;
 
     tab[currentTab].style.display = "none";
-
     currentTab = currentTab + n;
     validate = false;
 
@@ -139,7 +138,6 @@ function stepIndicator(n) {
     for (i = 0; i < step.length; i++) {
         step[i].className = step[i].className.replace(" active", " ")
     }
-
 
     step[n].className += " active";
     console.log("stepIndicator");

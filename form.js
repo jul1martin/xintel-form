@@ -26,7 +26,7 @@ function newUser(e) {
     return showTab(currentTab);
 }
 
-var currentTab = 2;
+var currentTab = 1;
 var tab = document.getElementsByClassName("tab");
 var validate = false;
 var advState = false;

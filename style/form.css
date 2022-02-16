@@ -1,5 +1,5 @@
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+:root {
+    --main-color: #4e73df;
 }
 
 ::-webkit-scrollbar {
@@ -16,20 +16,22 @@ body {
     border-radius: 50px;
 }
 
-/* :root {
-    --primaryy: #4e73df !important;
-    --success: #1cc88a !important;
-} */
-
-/* bg-primaryy {
-    background-color: var(--primaryy);
+body {
+    font-family: 'Fira Sans', sans-serif;
+    background-color:#CFCFCD; 
+    color:#000500;
+    min-height:919px;
+    margin: 0px;
+    padding: 0px;
 }
 
-bg-success {
-    background-color: var(--success);
-} */
-
-
+footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+    max-height: 76px;
+}
 
 label[data-placeholder] {
     font-size: 20px;
@@ -40,13 +42,13 @@ select::-webkit-scrollbar {
 }
 
 select::-webkit-scrollbar-track {
-background: #4e73df;     
+    background: var(--main-color);     
 }
 
 select::-webkit-scrollbar-thumb {
-background-color: #CFCFCD;    
-border-radius: 20px;       
-border: 3px solid #4e73df;  
+    background-color: #CFCFCD;    
+    border-radius: 20px;       
+    border: 3px solid var(--main-color);  
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -71,18 +73,6 @@ input.valid {
     background-color: white;
 }
 
-.step.active {
-    opacity: 1;
-}
-
-.step.incomplete {
-    background-color: red;
-}
-
-.step.finish {
-    background-color: #04AA6D !important;
-}
-
 .step {
     height: 15px;
     width: 15px;
@@ -92,6 +82,18 @@ input.valid {
     border-radius: 50%;
     display: inline-block;
     opacity: 0.5;
+}
+
+.active {
+    opacity: 1;
+}
+
+.incomplete {
+    background-color: red;
+}
+
+.finish {
+    background-color: #04AA6D ;
 }
 
 label {
@@ -135,23 +137,11 @@ form {
     justify-content: center !important;
     margin-right: -50px;
     margin-left: -50px;
-
 }
 
 .card-body {
-    padding:0;
-    padding-top: 1.25rem !important;
+    padding:0 !important;
 }
-
-/* .division {
-    background-color:#4e73df;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    max-width:0.25%;  
-    height: auto;      
-    margin-left:5%;
-    margin-right:5%;
-} */
 
 .input-form {
     position:relative;
@@ -159,9 +149,7 @@ form {
 }
 
 .input-form input {
-    width:100%;
     padding:0 5px;
-    /* background:none; */
     outline:none;
 }
 
@@ -169,7 +157,7 @@ form {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1rem;
-    width: 75%;
+    width: 60%;
     position: relative;
 }
 
@@ -203,12 +191,12 @@ form {
 }
 
 .form-row input[type=text]:focus, .form-row input[type=text]:valid {
-    border-bottom: 2px solid #4e73df;
+    border-bottom: 2px solid var(--main-color);
 }
 
 .form-block input[type=text]:focus + label[data-placeholder]:after, .form-block input[type=text]:valid + label[data-placeholder]:after {
     transform: translate(-7.5%, -25%) scale(0.9, 0.9);
-    color: #4e73df;
+    color: var(--main-color);
 }
 
 /* INPUTS NUMBER */
@@ -238,17 +226,17 @@ form {
 }
 
 .form-row input[type=number]:focus, .form-row input[type=number]:valid {
-    border-bottom: 2px solid #4e73df;
+    border-bottom: 2px solid var(--main-color);
 }
 
 .form-block input[type=number]:focus + label[data-placeholder]:after, .form-block input[type=number]:valid + label[data-placeholder]:after {
     transform: translate(-7.5%, -25%) scale(0.9, 0.9);
-    color: #4e73df;
+    color: var(--main-color);
     background-color: none;
 }
 
 .divisor {
-    border: 1px solid #4e73df;
+    border: 1px solid var(--main-color);
     border-radius: 2px;
     margin: 50px auto 50px auto;
     position: relative;
@@ -260,7 +248,7 @@ form {
     display: none;
     color: #e74a3b;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .btn-prevBtn {
@@ -293,7 +281,7 @@ form {
 
 .double-line input[type=text]:focus + label[data-placeholder]:after, .double-line input[type=text]:valid + label[data-placeholder]:after {
     transform: translate(-7%, -70%) scale(0.9, 0.9);
-    color: #4e73df;
+    color: var(--main-color);
     background-color: none;
 }
 
@@ -311,7 +299,7 @@ form {
 
 .double-line input[type=number]:focus + label[data-placeholder]:after, .double-line input[type=number]:valid + label[data-placeholder]:after {
     transform: translate(-7%, -70%) scale(0.9, 0.9);
-    color: #4e73df;
+    color: var(--main-color);
     background-color: none;
 }
 @media (max-width:1865px) {
@@ -330,7 +318,7 @@ form {
     
     .double-line input[type=text]:focus + label[data-placeholder]:after, .double-line input[type=text]:valid + label[data-placeholder]:after {
         transform: translate(-7%, -70%) scale(0.9, 0.9);
-        color: #4e73df;
+        color: var(--main-color);
         background-color: none;
     }
 
@@ -348,7 +336,7 @@ form {
     
     .double-line input[type=number]:focus + label[data-placeholder]:after, .double-line input[type=number]:valid + label[data-placeholder]:after {
         transform: translate(-7%, -70%) scale(0.9, 0.9);
-        color: #4e73df;
+        color: var(--main-color);
         background-color: none;
     }
 }

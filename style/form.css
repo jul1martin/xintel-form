@@ -19,7 +19,7 @@
 body {
     font-family: 'Fira Sans', sans-serif;
     background-color:#CFCFCD; 
-    color:var(--main-bg-color);
+    color:#000500;
     min-height:919px;
     margin: 0px;
     padding: 0px;

@@ -26,6 +26,7 @@
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
+            <span class="step"></span>
         </div>
         <div class="card-body">
             <div class="form-container">
@@ -33,7 +34,7 @@
                     <div class="row">
                         <div class="col-md-8 mt-2">
                             <div class="tab">
-                                <p class="text-center" style="font-size: 25px;">Datos inmobiliaria</p>
+                                <p class="text-center" style="font-size: 25px;">Datos de la inmobiliaria</p>
                                 <div class="mb-2 input-form form-block">
                                     <input type="text" name="nom_imb" autocomplete="organization-title" required>
                                     <label alt="Label" data-placeholder="Nombre de la inmobiliaria"></label>
@@ -58,38 +59,53 @@
                                     <input type="text" name="razon_soc" autocomplete="off" required>
                                     <label alt="Label" data-placeholder="Razon social y CUIT"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block">
-                                    <input type="text" name="titular" autocomplete="off" required>
-                                    <label alt="Label" data-placeholder="Datos del titular (Nombre completo, e-mail y teléfono)"></label>
-                                </div>
                             </div>
                         </div>
                     </div>
-                        <!-- <div class="col-md-4 division"></div> -->
                     <div class="row">
                         <div class="col-md-8 mt-2">             
                             <div class="tab">
-                                
-                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Contratos</p>
+                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos del titular</p>
                                 <div class="mb-2 input-form form-block">
+                                <input type="text" name="nom_user" autocomplete="name" required>
+                                <label alt="Label" data-placeholder="Nombre completo"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block">
+                                <input type="text" name="email_personal_user" autocomplete="email" required>
+                                <label alt="Label" data-placeholder="Correo electronico personal"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block">
+                                <input type="text" name="dni_user" autocomplete="off" required>
+                                <label alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 mt-2">             
+                            <div class="tab">
+                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Sistemas e integraciones.</p>
+                                <div class="mb-2 input-form form-block double-line">
                                     <input name="cuantas_propiedades" type="number"   required>
                                     <label data-placeholder="¿Cuántas propiedades tiene actualmente la empresa?" alt="Label"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block">
+                                <div class="mb-2 input-form form-block double-line">
                                     <input name="cuantas_propiedades" type="number"`   required>
                                     <label alt="Label" data-placeholder="¿Cuántos contratos tiene actualmente la empresa?"></label>
                                 </div>
                                 <div class="mb-2 select-form form-block">
+                                    <label for="transformEstatic" data-placeholder="" alt="Label">Sistemas que adquiere.</label>
                                     <select class="" name="servicios" id="transformEstatic" required>
-                                        <option value="null">Sistemas que adquiere.</option>
+                                        <option selected disabled value="">Elija una opcion</option>
                                         <option value="Leasing">Xintel Leasing.</option>
                                         <option value="admin_alquieres">Xintel Administracion de alquileres.</option>
                                         <option value="ambos_servicios">Ambos sistemas.</option>
                                     </select>  
                                 </div>
                                 <div class="mb-2 select-form form-block">
-                                    <select class="" name="pag_web" id="transformEstatic" required>
-                                        <option value="null">Pagina Web.</option>
+                                    <label data-placeholder="" alt="Label">¿Tiene Pagina Web?</label>
+                                    <select class="" name="pag_web" required>
+                                        <option selected disabled value="">Elija una opcion</option>
                                         <option value="Xinte_web">En proceso con Xintel.</option>
                                         <option value="Integracion">Necesito integrarla.</option>
                                         <option value="No_web">No utilizo.</option>
@@ -97,8 +113,9 @@
                                 </div>
                                 <!-- ACA IRIA QUE SI NECESITA INTEGRARLA SE LA PEDIREMOS -->
                                 <div class="mb-2 select-form form-block">
-                                    <select class="" name="migraciones" id="transformEstatic" required>
-                                        <option value="null">Precisa realizar migraciones?</option>
+                                    <label data-placeholder="" alt="Label">¿Precisa realizar migraciones?</label>
+                                    <select class="" name="migraciones" required>
+                                        <option selected disabled value="">Elija una opcion</option>
                                         <option value="No">No, las cargaremos manualmente.</option>
                                         <option value="Si_zonaprop">Si, desde Zonaprop.</option>
                                         <option value="Si_mercadolibre">Si, desde Mercado Libre.</option>
@@ -106,7 +123,8 @@
                                 </div>
                                 <div class="mb-2 select-form form-block">
                                     <label for="">Selecciona una opción (Apreta control + opcion que elijas)</label>
-                                    <select name="portales" id="" multiple required>
+                                    <select name="portales" class="form-select" id="" multiple aria-label="multiple select example">
+                                        <option selected disabled value="">Elija una opcion</option>
                                         <option value="zonaprop">Zonaprop.</option>
                                         <option value="argenprop">Argenprop.</option>
                                         <option value="mercado_libre">Mercado Libre.</option>

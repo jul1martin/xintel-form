@@ -164,6 +164,41 @@ form {
 .form-block:last-child {
     margin-bottom: 0;
 }
+/* SELECTS */
+
+
+
+.form-block select {
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 2px solid black;
+    border-radius: 3px;
+    transition: all 0.5s ease-in-out;
+    outline: 0;
+}
+
+.form-block select + label {
+    pointer-events: none;
+}
+.form-block select + label:after {
+    content: attr(data-placeholder);
+    display: block;
+    position:absolute;
+    /* top: -10%;
+    left: 0.5rem; */
+    /* transform: translate(-2.5%, 50%);
+    transition: all 0.75s ease-in-out; */
+    padding: 0 0.25rem;
+}
+
+.form-block select:focus, .form-block select:valid {
+    border-bottom: 2px solid var(--main-color) !important;
+}
+
+.form-block select:focus + label:after, .form-block select:valid + label:after {
+    /* transform: translate(-7.5%, -25%) scale(0.9, 0.9); */
+    color: var(--main-color);
+}
 
 /* INPUT TEXT */
 
@@ -190,7 +225,7 @@ form {
     padding: 0 0.25rem;
 }
 
-.form-row input[type=text]:focus, .form-row input[type=text]:valid {
+.form-block input[type=text]:focus, .form-block input[type=text]:valid {
     border-bottom: 2px solid var(--main-color);
 }
 
@@ -220,17 +255,17 @@ form {
     position:absolute;
     top: -15%;
     left: 0.5rem;
-    transform: translate(-2.5%, 50%);
-    transition: all 0.75s ease-in-out;
+    /* transform: translate(-2.5%, 50%);
+    transition: all 0.75s ease-in-out; */
     padding: 0 0.25rem;
 }
 
-.form-row input[type=number]:focus, .form-row input[type=number]:valid {
+.form-block input[type=number]:focus, .form-block input[type=number]:valid {
     border-bottom: 2px solid var(--main-color);
 }
 
 .form-block input[type=number]:focus + label[data-placeholder]:after, .form-block input[type=number]:valid + label[data-placeholder]:after {
-    transform: translate(-7.5%, -25%) scale(0.9, 0.9);
+    /* transform: translate(-7.5%, -25%) scale(0.9, 0.9); */
     color: var(--main-color);
     background-color: none;
 }
@@ -267,41 +302,6 @@ form {
 
 /* Double line */
 
-.double-line input[type=text] + label[data-placeholder]:after {
-    content: attr(data-placeholder);
-    display: block;
-    position:absolute;
-    top: -20%;
-    left: 0.5rem;
-    transform: translate(-2.5%, -40%);
-    transition: all 0.75s ease-in-out;
-    padding: 0 0.25rem;
-    margin-top: 10px;
-}
-
-.double-line input[type=text]:focus + label[data-placeholder]:after, .double-line input[type=text]:valid + label[data-placeholder]:after {
-    transform: translate(-7%, -70%) scale(0.9, 0.9);
-    color: var(--main-color);
-    background-color: none;
-}
-
-.double-line input[type=number] + label[data-placeholder]:after {
-    content: attr(data-placeholder);
-    display: block;
-    position:absolute;
-    top: -10%;
-    left: 0.5rem;
-    transform: translate(-2.5%, -40%);
-    transition: all 0.75s ease-in-out;
-    padding: 0 0.25rem;
-    margin-top: 10px;
-}
-
-.double-line input[type=number]:focus + label[data-placeholder]:after, .double-line input[type=number]:valid + label[data-placeholder]:after {
-    transform: translate(-7%, -70%) scale(0.9, 0.9);
-    color: var(--main-color);
-    background-color: none;
-}
 @media (max-width:1865px) {
 
     .double-line input[type=text] + label[data-placeholder]:after {

@@ -1,6 +1,8 @@
 var boton = document.getElementById('newUser');
 var inputsArray,inputs;
 var numName = 0;
+var currentTab = 0;
+
 
 boton.addEventListener('click', newUser);
 function newUser(e) {
@@ -28,7 +30,6 @@ function newUser(e) {
     return showTab(currentTab);
 }
 
-var currentTab = 0;
 var tab = document.getElementsByClassName("tab");
 var validate = false;
 var advState = false;

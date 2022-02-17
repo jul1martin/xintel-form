@@ -1,5 +1,6 @@
 var boton = document.getElementById('newUser');
 var inputsArray,inputs;
+var numName = 0;
 
 boton.addEventListener('click', newUser);
 function newUser(e) {
@@ -7,21 +8,22 @@ function newUser(e) {
     e.stopImmediatePropagation();
     var env = document.getElementById('send');
     var send = document.createElement("div");
+    numName++;
+
     send.innerHTML =
     `<div class="divisor"></div>
     <div class="mb-2 input-form form-block">
-    <input type="text" name="nom_user" autocomplete="name" required>
+    <input type="text" name="nom_user`+numName+`" autocomplete="name" required>
     <label alt="Label" data-placeholder="Nombre completo"></label>
     </div>
     <div class="mb-2 input-form form-block">
-    <input type="text" name="email_personal_user" autocomplete="email" required>
+    <input type="text" name="email_personal_user`+numName+`" autocomplete="email" required>
     <label alt="Label" data-placeholder="Correo electronico personal"></label>
     </div>
     <div class="mb-2 input-form form-block">
-    <input type="text" name="dni_user" autocomplete="off" required>
+    <input type="text" name="dni_user`+numName+`" autocomplete="off" required>
     <label alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
     </div>`;
-
     env.appendChild(send);
     return showTab(currentTab);
 }
@@ -136,7 +138,6 @@ function stepIndicator(n) {
     for (i = 0; i < step.length; i++) {
         step[i].className = step[i].className.replace(" active", " ")
     }
-
 
     step[n].className += " active";
 }

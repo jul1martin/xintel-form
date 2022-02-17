@@ -1,5 +1,6 @@
 :root {
     --main-color: #4e73df;
+    --main-green: #1cc88a;
 }
 
 ::-webkit-scrollbar {
@@ -29,7 +30,7 @@ footer {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 400px;
     max-height: 76px;
 }
 
@@ -122,7 +123,6 @@ form {
 
 .select-form {
     position:relative;
-    border-bottom: 2px solid black;
     border-radius: 3px;
     position:relative;
     margin: 50px 0;
@@ -166,8 +166,6 @@ form {
 }
 /* SELECTS */
 
-
-
 .form-block select {
     box-sizing: border-box;
     width: 100%;
@@ -191,8 +189,8 @@ form {
     padding: 0 0.25rem;
 }
 
-.form-block select:focus, .form-block select:valid {
-    border-bottom: 2px solid var(--main-color) !important;
+.form-block select:focus {
+    border-bottom: 2px solid var(--main-color);
 }
 
 .form-block select:focus + label:after, .form-block select:valid + label:after {
@@ -286,18 +284,22 @@ form {
     font-size: 30px;
 }
 
-.btn-prevBtn {
+.btn-gray {
     background-color: #909397;
     color: white;
 }
 
-.btn-nextBtn {
-    background-color: #1cc88a;
+.btn-green {
+    background-color: var(--main-green);
     color: white;
 }
 
 .btn-plus {
     display: inline-block;
+}
+
+.modal-footer {
+    justify-content: center;
 }
 
 /* Double line */

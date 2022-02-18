@@ -37,27 +37,27 @@
                                 <p class="text-center" style="font-size: 25px;">Datos de la inmobiliaria</p>
                                 <div class="mb-2 input-form form-block">
                                     <input type="text" name="nom_imb" autocomplete="organization-title" required>
-                                    <label alt="Label" data-placeholder="Nombre de la inmobiliaria"></label>
+                                    <label class="label-input" alt="Label" data-placeholder="Nombre de la inmobiliaria"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block">
                                     <input type="text" name="email_personal" autocomplete="email" required>
-                                    <label alt="Label" data-placeholder="Correo electronico personal"></label>
+                                    <label  class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block">
                                     <input type="text" name="email_empresa" autocomplete="email" required>
-                                    <label alt="Label" data-placeholder="Correo electronico de la empresa"></label>
+                                    <label class="label-input" alt="Label" data-placeholder="Correo electronico de la empresa"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block ">
                                     <input type="text" name="direccion" autocomplete="street-address" required>
-                                    <label alt="Label" data-placeholder="Dirección"></label>
+                                    <label class="label-input" alt="Label" data-placeholder="Dirección"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block ">
                                     <input type="text" name="localidad" autocomplete="off" required>
-                                    <label alt="Label" data-placeholder="Localidad"></label>
+                                    <label class="label-input" alt="Label" data-placeholder="Localidad"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block ">
                                     <input type="text" name="razon_soc" autocomplete="off" required>
-                                    <label alt="Label" data-placeholder="Razon social y CUIT"></label>
+                                    <label class="label-input" alt="Label" data-placeholder="Razon social y CUIT"></label>
                                 </div>
                             </div>
                         </div>
@@ -68,15 +68,15 @@
                                 <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos del titular</p>
                                 <div class="mb-2 input-form form-block">
                                 <input type="text" name="nom_tit" autocomplete="name" required>
-                                <label alt="Label" data-placeholder="Nombre completo"></label>
+                                <label class="label-input" alt="Label" data-placeholder="Nombre completo"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block">
                                 <input type="text" name="email_personal_tit" autocomplete="email" required>
-                                <label alt="Label" data-placeholder="Correo electronico personal"></label>
+                                <label class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block">
-                                <input type="text" name="dni_tit" autocomplete="off" required>
-                                <label alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
+                                <input type="number" name="dni_tit" autocomplete="off" required>
+                                <label class="label-input" alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
                                 </div>
                             </div>    
                         </div>
@@ -87,14 +87,14 @@
                                 <p class="text-center" style="margin-top:1%;font-size: 25px;">Sistemas e integraciones.</p>
                                 <div class="mb-2 input-form form-block double-line">
                                     <input name="cuantas_propiedades" type="number" required>
-                                    <label data-placeholder="¿Cuántas propiedades tiene actualmente la empresa?" alt="Label"></label>
+                                    <label class="label-input" data-placeholder="¿Cuántas propiedades tiene actualmente la empresa?" alt="Label"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block double-line">
                                     <input name="cuantos_contratos" type="number"`   required>
-                                    <label alt="Label" data-placeholder="¿Cuántos contratos tiene actualmente la empresa?"></label>
+                                    <label class="label-input" alt="Label" data-placeholder="¿Cuántos contratos tiene actualmente la empresa?"></label>
                                 </div>
                                 <div class="mb-2 select-form form-block">
-                                    <label data-placeholder="" alt="Label">Sistemas que adquiere.</label>
+                                    <label class="label-select" data-placeholder="" alt="Label">Sistemas que adquiere.</label>
                                     <select class="" name="servicios" required>
                                         <option selected disabled value="">Elija una opcion</option>
                                         <option value="Leasing">Xintel Leasing.</option>
@@ -103,26 +103,30 @@
                                     </select>  
                                 </div>
                                 <div class="mb-2 select-form form-block">
-                                    <label data-placeholder="" alt="Label">¿Tiene Pagina Web?</label>
-                                    <select class="" name="pag_web" required>
+                                    <label class="label-select" data-placeholder="" alt="Label">¿Tiene Pagina Web?</label>
+                                    <select class="" name="pag_web" id="dinamicSelect" required>
                                         <option selected disabled value="">Elija una opcion</option>
-                                        <option value="Xinte_web">En proceso con Xintel.</option>
-                                        <option value="Integracion">Necesito integrarla.</option>
-                                        <option value="No_web">No utilizo.</option>
+                                        <option value="xinte_web">En proceso con Xintel.</option>
+                                        <option value="integracion">Necesito integrarla.</option>
+                                        <option value="no_web">No utilizo.</option>
                                     </select>  
+                                </div>
+                                <div class="mb-2 input-form form-block" id="dinamicHidden" hidden="">
+                                    <input type="text" name="url_integracion" autocomplete="off" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Ingrese la URL de su pagina Web."></label>
                                 </div>
                                 <!-- ACA IRIA QUE SI NECESITA INTEGRARLA SE LA PEDIREMOS -->
                                 <div class="mb-2 select-form form-block">
-                                    <label data-placeholder="" alt="Label">¿Precisa realizar migraciones?</label>
+                                    <label class="label-select" data-placeholder="" alt="Label">¿Precisa realizar migraciones?</label>
                                     <select class="" name="migraciones" required>
                                         <option selected disabled value="">Elija una opcion</option>
-                                        <option value="No">No, las cargaremos manualmente.</option>
-                                        <option value="Si_zonaprop">Si, desde Zonaprop.</option>
-                                        <option value="Si_mercadolibre">Si, desde Mercado Libre.</option>
+                                        <option value="no">No, las cargaremos manualmente.</option>
+                                        <option value="si_zonaprop">Si, desde Zonaprop.</option>
+                                        <option value="si_mercadolibre">Si, desde Mercado Libre.</option>
                                     </select>  
                                 </div>
                                 <!-- <div class="mb-2 select-form form-block">
-                                    <label for="">Selecciona una opción (Apreta control + opcion que elijas)</label>
+                                    <label class="label-select" for="">Selecciona una opción (Apreta control + opcion que elijas)</label>
                                     <span class="multiselect-native-select">
                                         <select name="portales_cliente[]" id="multiselect1" multiple="multiple">
                                             <option value="1">Zonaprop</option>
@@ -151,7 +155,7 @@
 
                                     
                                 </div> -->
-                                <div class="mb-2 select-form form-block">
+                                <!-- <div class="mb-2 select-form form-block">
                                     <label for="">Selecciona una opción (Apreta control + opcion que elijas)</label>
                                     <select name="portales" class="form-select" id="" multiple aria-label="multiple select example">
                                         <option selected disabled value="">Elija una opcion</option>
@@ -160,7 +164,7 @@
                                         <option value="mercado_libre">Mercado Libre.</option>
                                         <option value="ninguno">Ninguno de los anteriores.</option>
                                     </select>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -171,15 +175,15 @@
                                 <div id="send">
                                         <div class="mb-2 input-form form-block">
                                         <input type="text" name="nom_user" autocomplete="name" required>
-                                        <label alt="Label" data-placeholder="Nombre completo"></label>
+                                        <label class="label-input" alt="Label" data-placeholder="Nombre completo"></label>
                                         </div>
                                         <div class="mb-2 input-form form-block">
                                         <input type="text" name="email_personal_user" autocomplete="email" required>
-                                        <label alt="Label" data-placeholder="Correo electronico personal"></label>
+                                        <label class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
                                         </div>
                                         <div class="mb-2 input-form form-block">
-                                        <input type="text" name="dni_user" autocomplete="off" required>
-                                        <label alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
+                                        <input type="number" name="dni_user" autocomplete="off" required>
+                                        <label class="label-input" alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
                                         </div>
                                 </div>
                                 <button type="button"  title="Añadir otro usuario" class="btn btn-plus" id="newUser"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -193,9 +197,9 @@
                         <div style="float:right;">
                             <a href="#beginning"><button type="button"  class="btn btn-gray" id="prevBtn" onclick="nextPrev(-1)">Anterior</button></a>
                             <a href="#beginning"><button type="button" class="btn btn-green" id="nextBtn" onclick="nextPrev(1)">Siguiente</button></a>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saveData">
                                 Test carga
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </form>
@@ -204,20 +208,22 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalSave" tabindex="-1">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cargar empresa.</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <p class="text-center">¿Está seguro en terminar el formulario?</p>
-            <p class="text-center">Por favor cerciorarse en que esten todos los datos correctamente.</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#beginning"><button type="button" class="btn btn-gray"  data-bs-dismiss="modal" onclick="hide()">Cancelar</button></a>
-                <a href="#beginning"><button type="button" class="btn btn-green"  form="ingreso">Subir</button></a>
+        <div class="shadow-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cargar empresa.</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <p class="text-center">¿Está seguro en terminar el formulario?</p>
+                <p class="text-center">Por favor cerciorarse en que esten todos los datos correctamente.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#beginning"><button type="button" class="btn btn-gray"  data-bs-dismiss="modal" onclick="hide()" >Cancelar</button></a>
+                    <a href="#beginning"><button type="button" class="btn btn-green" id="saveCompany"  onclick="submit()" form="ingreso">Subir</button></a>
+                </div>
             </div>
         </div>
     </div>
@@ -239,13 +245,6 @@
     $('[data-toggle="popover"]').popover()
     })
 
-    $(document).ready(function() {
-      if($('#multiselect1')) {
-        $('#multiselect1').multiselect();
-        $('#multiselect2').multiselect();
-      }
-    });
-  
     
 </script>
 <script src="form.js"></script>

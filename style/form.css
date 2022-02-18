@@ -34,7 +34,11 @@ footer {
     max-height: 76px;
 }
 
-label[data-placeholder] {
+.label-input {
+    font-size: 20px;
+}
+
+.label-select {
     font-size: 20px;
 }
 
@@ -164,6 +168,7 @@ form {
 .form-block:last-child {
     margin-bottom: 0;
 }
+
 /* SELECTS */
 
 .form-block select {
@@ -178,22 +183,23 @@ form {
 .form-block select + label {
     pointer-events: none;
 }
+
 .form-block select + label:after {
     content: attr(data-placeholder);
     display: block;
     position:absolute;
-    /* top: -10%;
-    left: 0.5rem; */
-    /* transform: translate(-2.5%, 50%);
-    transition: all 0.75s ease-in-out; */
+    top: -10%;
+    left: 0.5rem; 
+    transform: translate(-2.5%, 50%);
+    transition: all 0.75s ease-in-out;
     padding: 0 0.25rem;
 }
 
-.form-block select:focus {
+.form-block select:focus, .form-block select:valid {
     border-bottom: 2px solid var(--main-color);
 }
-
-.form-block select:focus + label:after, .form-block select:valid + label:after {
+/*  REVISAR */
+.label-select select:focus + label:after, .label-select select:valid + label:after {
     /* transform: translate(-7.5%, -25%) scale(0.9, 0.9); */
     color: var(--main-color);
 }
@@ -212,6 +218,7 @@ form {
 .form-block input[type=text] + label[data-placeholder] {
     pointer-events: none;
 }
+
 .form-block input[type=text] + label[data-placeholder]:after {
     content: attr(data-placeholder);
     display: block;
@@ -253,8 +260,8 @@ form {
     position:absolute;
     top: -15%;
     left: 0.5rem;
-    /* transform: translate(-2.5%, 50%);
-    transition: all 0.75s ease-in-out; */
+    transform: translate(-2.5%, 50%);
+    transition: all 0.75s ease-in-out;
     padding: 0 0.25rem;
 }
 
@@ -263,7 +270,7 @@ form {
 }
 
 .form-block input[type=number]:focus + label[data-placeholder]:after, .form-block input[type=number]:valid + label[data-placeholder]:after {
-    /* transform: translate(-7.5%, -25%) scale(0.9, 0.9); */
+    transform: translate(-7.5%, -25%) scale(0.9, 0.9);
     color: var(--main-color);
     background-color: none;
 }

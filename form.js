@@ -5,28 +5,37 @@ var nextBtn = document.getElementById("nextBtn");
 var dinamicSelect = document.getElementById("dinamicSelect");
 var dinamicHidden = document.getElementById("dinamicHidden");
 var dinamicInput = document.getElementById("dinamicInput");
+var checkboxPortales = document.getElementsByClassName("inputCheckbox");
 var validate = false;
 var advState = false;
-var currentTab = 3;
-var inputsArray,inputs,selectsArray,selects, validInput, validSelect;
-var modalSave = new bootstrap.Modal(document.getElementById('modalSave'), {})
-// var lastPage = document.getElementById("lastPage");
-nextBtn.addEventListener ("click",function(){nextPrev(1)})
-prevBtn.addEventListener ("click",function(){nextPrev(-1)})
+var validCheckbox = false;
+var currentTab = 4;
+var step = document.getElementsByClassName("step")[currentTab];
+var completeStep = document.getElementById("complete-step");
+var inputsArray, inputs, selectsArray, selects, validInput, validSelect;
+var modalSave = new bootstrap.Modal(document.getElementById('modalSave'),{})
+nextBtn.addEventListener("click",function(){nextPrev(1)})
+prevBtn.addEventListener("click",function(){nextPrev(-1)})
+bntNewUser.addEventListener('click', newUser);
+
 
 showTab(currentTab);
 
 
 function showTab(n) {
-    tab[n].style.display= "block";
+    tab[n].style.display = "block";
     prevBtn.style.display = "inline";
     nextBtn.innerHTML = "Siguiente";
     
     var inputFile = document.getElementById("formFile");
     var labelFile = document.getElementById("labelFile");
     if (n == 0) prevBtn.style.display = "none";
-    if (n == (tab.length - 1)) nextBtn.innerHTML = "Cargar empresa";
-
+    if (n == (tab.length - 2)) nextBtn.innerHTML = "Cargar empresa"; // tab.length-1 
+    if (n == (tab.length - 1)) {
+        completeStep.style.display = "none";
+        nextBtn.style.display = "none";
+        prevBtn.style.display = "none";
+    }
     selects = tab[currentTab].getElementsByTagName("select");
     selectsArray = Array.from(selects);
     inputs = tab[currentTab].getElementsByTagName("input");
@@ -34,7 +43,8 @@ function showTab(n) {
 
     if(!selectsArray.length) validSelect = true;
 
-    inputsArray.forEach(input => { input.addEventListener("keyup",inputValidate) });
+    inputsArray.forEach(input => { input.addEventListener("input",inputValidate) });
+    inputsArray.forEach(input => { input.addEventListener("input",function() {limitLength(input)})});
     selectsArray.forEach(select => { select.addEventListener("click",selectValidate) });
 
     inputFile.addEventListener("input",function(){ if (inputFile.value) labelFile.style.borderBottom = "2px solid var(--main-color)"; })
@@ -42,10 +52,8 @@ function showTab(n) {
 }
 
 function inputValidate(input) {
-    var step = document.getElementsByClassName("step")[currentTab];
-
     if(!inputsArray.length) inputsArray = true;
-
+console.log(input.target.type)
     validInput = true;
     if (validate) {
         input.target.style.backgroundColor = "white";
@@ -103,8 +111,9 @@ function formValidate() {
     selects = tab[currentTab].getElementsByTagName("select");
 
     for (i = 0; i < inputs.length; i++) {
-        if (inputs[i].type == "file") continue;
         if (inputs[i].disabled) continue;
+        if (inputs[i].type == "file") continue;
+        // if (inputs[i].disabled) continue;
         if (dinamicInput == inputs[i] && dinamicHidden.hidden) continue;
         if (!inputs[i].value) {
             inputs[i].style.backgroundColor = "#ffdddd";
@@ -153,21 +162,21 @@ function formValidate() {
 
 function nextPrev(n) {
     if (n == 1 && !formValidate()) return false;
-
+    console.log(currentTab)
     tab[currentTab].style.display = "none";
-    currentTab = currentTab + n;
     validate = false;
+    currentTab = currentTab + n;
 
-    if (currentTab >= tab.length) {
+    if (currentTab >= tab.length - 2) {
         modalSave.show();
-        // document.getElementById("ingreso").submit();
-        return false;
+
+    console.log(currentTab)
     }
+
+
 
     showTab(currentTab);
 }
-
-bntNewUser.addEventListener('click', newUser);
 
 function newUser(e) {
     e.preventDefault();
@@ -202,6 +211,21 @@ function stepIndicator(n) {
     for (i = 0; i < step.length; i++) step[i].className = step[i].className.replace(" active", " ");
     
     step[n].className += " active";
+}
+
+function limitLength(input) {
+    switch (input.name) {
+        case "cp":
+            if (input.value.length > 4) input.value = input.value.slice(0,4);
+            break;
+        case "dni_tit":
+            if (input.value.length > 9) input.value = input.value.slice(0,9);
+            break;
+        case "dni_user":
+            if (input.value.length > 9) input.value = input.value.slice(0,9);
+            break;
+    }
+    return;
 }
 
 dinamicSelect.addEventListener("click", function(){

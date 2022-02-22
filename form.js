@@ -144,9 +144,11 @@ function formValidate() {
     if (isValid) {
         document.getElementsByClassName("step")[currentTab].style.backgroundColor = "#04AA6D"; // document.getElementsByClassName("step")[currentTab].className += " finish";
         return isValid;
-    }
+    } 
         document.getElementsByClassName("step")[currentTab].style.backgroundColor = "red"; // document.getElementsByClassName("step")[currentTab].className += " incomplete";
         return isValid;
+
+
 }
 
 function nextPrev(n) {
@@ -155,6 +157,12 @@ function nextPrev(n) {
     tab[currentTab].style.display = "none";
     currentTab = currentTab + n;
     validate = false;
+
+    if (currentTab >= tab.length) {
+        modalSave.show();
+        // document.getElementById("ingreso").submit();
+        return false;
+    }
 
     showTab(currentTab);
 }

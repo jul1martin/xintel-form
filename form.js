@@ -9,7 +9,7 @@ var checkboxPortales = document.getElementsByClassName("inputCheckbox");
 var validate = false;
 var advState = false;
 var validCheckbox = false;
-var currentTab = 4;
+var currentTab = 0;
 var step = document.getElementsByClassName("step")[currentTab];
 var completeStep = document.getElementById("complete-step");
 var inputsArray, inputs, selectsArray, selects, validInput, validSelect;
@@ -162,18 +162,13 @@ function formValidate() {
 
 function nextPrev(n) {
     if (n == 1 && !formValidate()) return false;
-    console.log(currentTab)
     tab[currentTab].style.display = "none";
     validate = false;
     currentTab = currentTab + n;
 
     if (currentTab >= tab.length - 2) {
         modalSave.show();
-
-    console.log(currentTab)
     }
-
-
 
     showTab(currentTab);
 }

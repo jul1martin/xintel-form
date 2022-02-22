@@ -115,7 +115,6 @@ select {
 
 input {
     border:none;
-    /* background:none; */
     outline:none;
     margin-top:15px;
     width:100%;
@@ -275,6 +274,23 @@ form {
     background-color: none;
 }
 
+/* INPUT FILE */
+
+.form-block input[type=file] {
+    display: none;
+}
+
+.form-block .label-file {
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 2px solid black;
+    border-radius: 3px;
+    transition: all 0.5s ease-in-out;
+    outline: 0;
+}
+
+/* OTHERS */
+
 .divisor {
     border: 1px solid var(--main-color);
     border-radius: 2px;
@@ -307,6 +323,54 @@ form {
 
 .modal-footer {
     justify-content: center;
+}
+
+
+
+/* TEST */
+
+.input-select {
+    background-color: white;
+    width: 96.3% !important;
+}
+
+.inputCheckbox {
+    margin-top: 0px;
+    width: auto !important;
+}
+
+.select-field,.task,.list{
+    width: auto;
+    padding: 0.3rem;
+}
+.list{
+    box-shadow: 0 30px 60px rgb(0,0,0,0.2);
+    display: none;
+}
+.down-arrow{
+    font-size: 1.2rem;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.2s linear;
+    /* border-bottom: 2px solid black;
+    border-bottom-right-radius: 2px solid black; */
+
+}
+.task{
+    display: block;
+    padding-left: 0;
+}
+.task span{
+    float: right;
+    font-size: 0.6rem;
+    padding-top: 6px;
+}
+
+.show{
+    display: block;
+}
+.rotate180{
+    transform: rotate(-90deg);
 }
 
 /* Double line */
@@ -347,5 +411,10 @@ form {
         transform: translate(-7%, -70%) scale(0.9, 0.9);
         color: var(--main-color);
         background-color: none;
+    }
+
+    .input-select {
+        background-color: white;
+        width: 94.7% !important;
     }
 }

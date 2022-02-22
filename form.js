@@ -2,9 +2,12 @@ var tab = document.getElementsByClassName("tab");
 var bntNewUser = document.getElementById('newUser');
 var prevBtn = document.getElementById("prevBtn");
 var nextBtn = document.getElementById("nextBtn");
+var dinamicSelect = document.getElementById("dinamicSelect");
+var dinamicHidden = document.getElementById("dinamicHidden");
+var dinamicInput = document.getElementById("dinamicInput");
 var validate = false;
 var advState = false;
-var currentTab = 0;
+var currentTab = 3;
 var inputsArray,inputs,selectsArray,selects, validInput, validSelect;
 var modalSave = new bootstrap.Modal(document.getElementById('modalSave'), {})
 // var lastPage = document.getElementById("lastPage");
@@ -13,11 +16,14 @@ prevBtn.addEventListener ("click",function(){nextPrev(-1)})
 
 showTab(currentTab);
 
+
 function showTab(n) {
     tab[n].style.display= "block";
     prevBtn.style.display = "inline";
     nextBtn.innerHTML = "Siguiente";
-
+    
+    var inputFile = document.getElementById("formFile");
+    var labelFile = document.getElementById("labelFile");
     if (n == 0) prevBtn.style.display = "none";
     if (n == (tab.length - 1)) nextBtn.innerHTML = "Cargar empresa";
 
@@ -31,6 +37,7 @@ function showTab(n) {
     inputsArray.forEach(input => { input.addEventListener("keyup",inputValidate) });
     selectsArray.forEach(select => { select.addEventListener("click",selectValidate) });
 
+    inputFile.addEventListener("input",function(){ if (inputFile.value) labelFile.style.borderBottom = "2px solid var(--main-color)"; })
     stepIndicator(n);
 }
 
@@ -45,6 +52,9 @@ function inputValidate(input) {
         if (!input.target.value) input.target.style.backgroundColor = "#ffdddd";
 
         for (i = 0; i < inputs.length; i++) {
+            if (inputs[i].disabled) continue;
+            if (inputs[i].type == "file") continue;
+            if (dinamicInput == inputs[i] && dinamicHidden.hidden) continue;
             if (!inputs[i].value) validInput = false; 
         }
 
@@ -84,16 +94,6 @@ function selectValidate(select) {
     }
 }
 
-function nextPrev(n) {
-    if (n == 1 && !formValidate()) return false;
-
-    tab[currentTab].style.display = "none";
-    currentTab = currentTab + n;
-    validate = false;
-
-    showTab(currentTab);
-}
-
 function formValidate() {
     var i, isValid = true;
     var adv = document.getElementById("adv");
@@ -103,6 +103,9 @@ function formValidate() {
     selects = tab[currentTab].getElementsByTagName("select");
 
     for (i = 0; i < inputs.length; i++) {
+        if (inputs[i].type == "file") continue;
+        if (inputs[i].disabled) continue;
+        if (dinamicInput == inputs[i] && dinamicHidden.hidden) continue;
         if (!inputs[i].value) {
             inputs[i].style.backgroundColor = "#ffdddd";
             isValid = false;
@@ -146,6 +149,16 @@ function formValidate() {
         return isValid;
 }
 
+function nextPrev(n) {
+    if (n == 1 && !formValidate()) return false;
+
+    tab[currentTab].style.display = "none";
+    currentTab = currentTab + n;
+    validate = false;
+
+    showTab(currentTab);
+}
+
 bntNewUser.addEventListener('click', newUser);
 
 function newUser(e) {
@@ -183,11 +196,13 @@ function stepIndicator(n) {
     step[n].className += " active";
 }
 
-var dinamicSelect = document.getElementById("dinamicSelect");
-var dinamicHidden = document.getElementById("dinamicHidden");
-
 dinamicSelect.addEventListener("click", function(){
-    if (dinamicSelect.value == "integracion") return dinamicHidden.removeAttribute("hidden") 
-    if (!dinamicHidden.getAttribute("hidden")) return dinamicHidden.setAttribute("hidden","")
-    
+    if (dinamicSelect.value == "integracion") {
+        hiden = false; 
+        return dinamicHidden.removeAttribute("hidden");
+    }
+    if (!dinamicHidden.getAttribute("hidden")) {
+        hiden = true; 
+        return dinamicHidden.setAttribute("hidden","");
+    }
 })

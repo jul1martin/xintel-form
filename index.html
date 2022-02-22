@@ -10,11 +10,13 @@
     <title>Formulario de integracion</title>
 
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="style/form.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/form.css">
+
 </head>
 <body>
 
@@ -52,12 +54,20 @@
                                     <label class="label-input" alt="Label" data-placeholder="Dirección"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block ">
+                                    <input type="number" name="cp" autocomplete="postal-code" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Codigo postal"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block ">
                                     <input type="text" name="localidad" autocomplete="off" required>
                                     <label class="label-input" alt="Label" data-placeholder="Localidad"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block ">
                                     <input type="text" name="razon_soc" autocomplete="off" required>
                                     <label class="label-input" alt="Label" data-placeholder="Razon social y CUIT"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block">
+                                    <label id="labelFile" for="formFile" class="label-file label-input">Imagen de la inmobiliaria en PNG o JPEG (Excluyente)</label>
+                                    <input class="" name="img_emp" type="file" id="formFile" accept="image/png, image/jpeg">
                                 </div>
                             </div>
                         </div>
@@ -112,7 +122,7 @@
                                     </select>  
                                 </div>
                                 <div class="mb-2 input-form form-block" id="dinamicHidden" hidden="">
-                                    <input type="text" name="url_integracion" autocomplete="off" required>
+                                    <input type="text" name="url_integracion" autocomplete="off" id="dinamicInput" required>
                                     <label class="label-input" alt="Label" data-placeholder="Ingrese la URL de su pagina Web."></label>
                                 </div>
                                 <!-- ACA IRIA QUE SI NECESITA INTEGRARLA SE LA PEDIREMOS -->
@@ -125,46 +135,24 @@
                                         <option value="si_mercadolibre">Si, desde Mercado Libre.</option>
                                     </select>  
                                 </div>
-                                <!-- <div class="mb-2 select-form form-block">
-                                    <label class="label-select" for="">Selecciona una opción (Apreta control + opcion que elijas)</label>
-                                    <span class="multiselect-native-select">
-                                        <select name="portales_cliente[]" id="multiselect1" multiple="multiple">
-                                            <option value="1">Zonaprop</option>
-                                            <option value="2">Mercadolibre AR</option>
-                                            <option value="3">Argenprop</option>
-                                            <option value="4">Mercadolibre UY</option>
-                                            <option value="5">Infocasas</option>
-                                            <option value="6">Gallito</option>
-                                            <option value="7">Amaira</option>
-                                            <option value="8">Properati</option>
-                                            <option value="9">Finaer</option>
-                                            <option value="10">BuscadorProp</option>
-                                        </select> 
-                                        <div class="btn-group">
-                                            <button type="button" class="multiselect dropdown-toggle custom-select text-center" data-toggle="dropdown" tittle="Ninguna seleccionada" aria-expanded="false"><span class="multiselect-selected-text">Ninguna seleccionada</span></button>
-                                            <div class="multiselect-container dropdown-menu" x-placemente="bottom-start">
-                                                <button type="button" class="multiselect-option dropdown-item" title="Zonaprop">
-                                                    <span>
-                                                        <input type="checkbox" value="1" name="" id="" class="form-check-input">
-                                                        <label for="" class="fomr-check-label">Zonaprop</label>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </span>
-
-                                    
-                                </div> -->
-                                <!-- <div class="mb-2 select-form form-block">
-                                    <label for="">Selecciona una opción (Apreta control + opcion que elijas)</label>
-                                    <select name="portales" class="form-select" id="" multiple aria-label="multiple select example">
-                                        <option selected disabled value="">Elija una opcion</option>
-                                        <option value="zonaprop">Zonaprop.</option>
-                                        <option value="argenprop">Argenprop.</option>
-                                        <option value="mercado_libre">Mercado Libre.</option>
-                                        <option value="ninguno">Ninguno de los anteriores.</option>
-                                    </select>
-                                </div> -->
+                                <div class="mb-2 select-form form-block">
+                                    <div class="select-field">
+                                        <label class="label-select" data-placeholder="" alt="Label">¿En qué portales publica actualmente la empresa?</label>
+                                        <input type="text" name="" placeholder="" id="" class="input-select" disabled>
+                                        <span class="down-arrow">&blacktriangledown;</span>
+                                    </div>
+                                    <div class="list">
+                                        <label for="Argenprop" class="task">
+                                            <input type="checkbox" name="" id="Argenprop" class="inputCheckbox"> Argenprop
+                                        </label>
+                                        <label for="task3" class="task">
+                                            <input type="checkbox" name="" id="Mercadolibre" class="inputCheckbox"> Mercadolibre
+                                        </label>
+                                        <label for="Zonaprop" class="task">
+                                            <input type="checkbox" name="" id="Zonaprop" class="inputCheckbox"> Zonaprop
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -197,9 +185,6 @@
                         <div style="float:right;">
                             <a href="#beginning"><button type="button"  class="btn btn-gray" id="prevBtn">Anterior</button></a>
                             <a href="#beginning"><button type="button" class="btn btn-green" id="nextBtn">Siguiente</button></a>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saveData">
-                                Test carga
-                            </button> -->
                         </div>
                     </div>
                 </form>
@@ -237,6 +222,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
 <script>
     $(function() {
     $('[data-toggle="tooltip"]').tooltip()
@@ -245,7 +232,11 @@
     $('[data-toggle="popover"]').popover()
     })
 
-    
+    document.querySelector('.select-field').addEventListener('click',()=>{
+        document.querySelector('.list').classList.toggle('show');
+        document.querySelector('.down-arrow').classList.toggle('rotate180');
+
+    });
 </script>
 <script src="form.js"></script>
 </body>

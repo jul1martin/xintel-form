@@ -5,17 +5,17 @@ var nextBtn = document.getElementById("nextBtn");
 var dinamicSelect = document.getElementById("dinamicSelect");
 var dinamicHidden = document.getElementById("dinamicHidden");
 var dinamicInput = document.getElementById("dinamicInput");
-var checkboxPortales = document.getElementsByClassName("inputCheckbox");
+var inputCheckbox = document.getElementById("checkbox");
 var validate = false;
 var advState = false;
-var validCheckbox = false;
+var checkboxFalse = 0;
 var currentTab = 0;
 var step = document.getElementsByClassName("step")[currentTab];
 var completeStep = document.getElementById("complete-step");
 var inputsArray, inputs, selectsArray, selects, validInput, validSelect;
 var modalSave = new bootstrap.Modal(document.getElementById('modalSave'),{})
 nextBtn.addEventListener("click",function(){nextPrev(1)})
-prevBtn.addEventListener("click",function(){nextPrev(-1)})
+prevBtn.addEventListener("click",function(){previusPrev(-1)})
 bntNewUser.addEventListener('click', newUser);
 
 
@@ -24,6 +24,7 @@ showTab(currentTab);
 
 function showTab(n) {
     tab[n].style.display = "block";
+    tab[n].className += " initial"
     prevBtn.style.display = "inline";
     nextBtn.innerHTML = "Siguiente";
     
@@ -53,16 +54,26 @@ function showTab(n) {
 
 function inputValidate(input) {
     if(!inputsArray.length) inputsArray = true;
-console.log(input.target.type)
     validInput = true;
     if (validate) {
-        input.target.style.backgroundColor = "white";
-        if (!input.target.value) input.target.style.backgroundColor = "#ffdddd";
-
+        input.target.style.backgroundColor = "var(--main-input-opacity)";
+        if (!input.target.value) input.target.style.backgroundColor = "var(--main-error)";
         for (i = 0; i < inputs.length; i++) {
-            if (inputs[i].disabled) continue;
-            if (inputs[i].type == "file") continue;
+            if (inputs[i].type == "file" || inputs[i].disabled) continue;
             if (dinamicInput == inputs[i] && dinamicHidden.hidden) continue;
+            if (inputs[i].type == "checkbox") {
+                if (inputs[i].checked == false) checkboxFalse ++;
+                if (checkboxFalse == 7) {
+                    inputCheckbox.style.backgroundColor = "var(--main-error)";
+                    validInput = false; 
+                    if (advState == false) {
+                        adv.style.display = "block";
+                        home.style.color = "#e74a3b"; 
+                        advState = true;
+                    } 
+                } else inputCheckbox.style.backgroundColor = "var(--main-input-opacity)"; 
+                continue
+            }
             if (!inputs[i].value) validInput = false; 
         }
 
@@ -74,6 +85,7 @@ console.log(input.target.type)
 
             advState = false;
         }
+        checkboxFalse = 0;
     }
 }
 
@@ -83,14 +95,10 @@ function selectValidate(select) {
 
     if (validate) {
         if (!select.target.value) {
-            select.target.style.backgroundColor = "#ffdddd";
-        } else {
-            select.target.style.backgroundColor = "white";
-        }
+            select.target.style.backgroundColor = "var(--main-error)";
+        } else select.target.style.backgroundColor = "var(--main-input-opacity)";
 
-        for (i = 0; i < selects.length; i++) {
-            if (!selects[i].value) validSelect = false; 
-        }
+        for (i = 0; i < selects.length; i++) if (!selects[i].value) validSelect = false; 
 
         if (validInput && validSelect) {
             home.style.color = "black"; 
@@ -106,17 +114,27 @@ function formValidate() {
     var i, isValid = true;
     var adv = document.getElementById("adv");
     var home = document.getElementById("home");
-
     inputs = tab[currentTab].getElementsByTagName("input");
     selects = tab[currentTab].getElementsByTagName("select");
 
     for (i = 0; i < inputs.length; i++) {
-        if (inputs[i].disabled) continue;
-        if (inputs[i].type == "file") continue;
-        // if (inputs[i].disabled) continue;
-        if (dinamicInput == inputs[i] && dinamicHidden.hidden) continue;
+        if (inputs[i].type == "file" || inputs[i].disabled || dinamicInput == inputs[i] && dinamicHidden.hidden) continue;
+        if (inputs[i].type == "checkbox") {
+            if (inputs[i].checked == false) checkboxFalse ++;
+            if (checkboxFalse == 7) {
+                inputCheckbox.style.backgroundColor = "var(--main-error)";
+                isValid = false;
+                validate = true;
+                if (advState == false) {
+                    adv.style.display = "block";
+                    home.style.color = "#e74a3b"; 
+                    advState = true;
+                } 
+            } else inputCheckbox.style.backgroundColor = "var(--main-input-opacity)";
+            continue;
+        }
         if (!inputs[i].value) {
-            inputs[i].style.backgroundColor = "#ffdddd";
+            inputs[i].style.backgroundColor = "var(--main-error)";
             isValid = false;
             validate = true;
             if (advState == false) {
@@ -125,7 +143,7 @@ function formValidate() {
                 advState = true;
             } 
         } else {
-                inputs[i].style.backgroundColor = "white";
+                inputs[i].style.backgroundColor = "var(--main-input-opacity)";
                 home.style.color = "black"; 
                 adv.style.display = "none"; 
                 advState = false;
@@ -134,7 +152,7 @@ function formValidate() {
 
     for (i = 0; i < selects.length; i++) {
         if (!selects[i].value) {
-            selects[i].style.backgroundColor = "#ffdddd";
+            selects[i].style.backgroundColor = "var(--main-error)";
             isValid = false;
             validate = true;
             if (advState == false) {
@@ -143,12 +161,13 @@ function formValidate() {
                 advState = true;
             } 
         } else {
-            selects[i].style.backgroundColor = "white";
+                selects[i].style.backgroundColor = "var(--main-input-opacity)";
                 home.style.color = "black"; 
                 adv.style.display = "none"; 
                 advState = false;
             } 
     }
+    checkboxFalse = 0
 
     if (isValid) {
         document.getElementsByClassName("step")[currentTab].style.backgroundColor = "#04AA6D"; // document.getElementsByClassName("step")[currentTab].className += " finish";
@@ -162,14 +181,23 @@ function formValidate() {
 
 function nextPrev(n) {
     if (n == 1 && !formValidate()) return false;
+    validate = false;
+    if (currentTab >= tab.length - 2) {
+        modalSave.show();
+        return
+    }
+    tab[currentTab].style.display = "none";
+    currentTab = currentTab + n;
+
+    showTab(currentTab);
+}
+
+function previusPrev(n) {
+    if (n == 1 && !formValidate()) return false;
     tab[currentTab].style.display = "none";
     validate = false;
     currentTab = currentTab + n;
-
-    if (currentTab >= tab.length - 2) {
-        modalSave.show();
-    }
-
+    
     showTab(currentTab);
 }
 
@@ -180,6 +208,7 @@ function newUser(e) {
     var numSelectsName = 0;
     var send = document.getElementById('send');
     var divSend = document.createElement("div");
+    divSend.className += " test";
     numSelectsName++;
 
     divSend.innerHTML =
@@ -223,7 +252,7 @@ function limitLength(input) {
     return;
 }
 
-dinamicSelect.addEventListener("click", function(){
+dinamicSelect.addEventListener("change", function(){
     if (dinamicSelect.value == "integracion") {
         hiden = false; 
         return dinamicHidden.removeAttribute("hidden");

@@ -20,53 +20,57 @@
 </head>
 <body>
 
-<div id="beginning">
-    <div class="card shadow mb-6" style="margin-top:50px;margin-bottom:127px; width:75%; margin-left:auto;margin-right:auto;">
-        <h1 class="text-center" style="margin-top:5%;font-weight: bold;" id="home">Formulario de ingreso | XINTEL</h1>
-        <p class="text-center" id="adv">Rellene todos los campos</p>
-        <div id="complete-step" style="text-align:center;margin-top:40px;">
+<div id="beginning" >
+    <header>
+        <img src="assets/logo.png" class="img-fluid" alt="Logo de Xintel" style="margin:25px;">
+    </header>
+    <div class="card shadow mb-6" style="margin-top:50px;margin-bottom:127px; width:55%; margin-left:auto;margin-right:auto;">
+        <h1 class="text-center initial" style="margin-top:5%;font-weight: bold;" id="home">Formulario de ingreso | XINTEL</h1>
+        <p class="text-center initial" id="adv">Rellene todos los campos</p>
+        <div id="complete-step" style="text-align:center;margin-top:40px;" class="initial">
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
+            <span class="step" hidden ></span>
         </div>
         <div class="card-body">
             <div class="form-container">
                 <form action="/new" method="POST" autocomplete="off" style="margin:0;" id="ingreso">
-                    <div class="row">
-                        <div class="col-md-8 mt-2">
+                    <div class="row"> 
+                        <div class="col-md-8 mt-2" >
                             <div class="tab">
                                 <p class="text-center" style="font-size: 25px;">Datos de la inmobiliaria</p>
                                 <div class="mb-2 input-form form-block">
-                                    <input type="text" name="nom_imb" autocomplete="organization-title" required>
+                                    <input type="text" name="nom_imb" required>
                                     <label class="label-input" alt="Label" data-placeholder="Nombre de la inmobiliaria"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block">
-                                    <input type="text" name="email_personal" autocomplete="email" required>
+                                    <input type="text" name="email_personal" required>
                                     <label  class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block">
-                                    <input type="text" name="email_empresa" autocomplete="email" required>
+                                <div class="mb-2 input-form form-block double-line-query">
+                                    <input type="text" name="email_empresa" required>
                                     <label class="label-input" alt="Label" data-placeholder="Correo electronico de la empresa"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block ">
-                                    <input type="text" name="direccion" autocomplete="street-address" required>
+                                    <input type="text" name="direccion" required>
                                     <label class="label-input" alt="Label" data-placeholder="Dirección"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block ">
-                                    <input type="number" name="cp" autocomplete="postal-code" required>
+                                    <input type="number" name="cp" required>
                                     <label class="label-input" alt="Label" data-placeholder="Codigo postal"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block ">
-                                    <input type="text" name="localidad" autocomplete="off" required>
+                                    <input type="text" name="localidad" required>
                                     <label class="label-input" alt="Label" data-placeholder="Localidad"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block ">
-                                    <input type="text" name="razon_soc" autocomplete="off" required>
+                                    <input type="text" name="razon_soc" required>
                                     <label class="label-input" alt="Label" data-placeholder="Razon social y CUIT"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block">
-                                    <label id="labelFile" for="formFile" class="label-file label-input">Imagen de la inmobiliaria en PNG o JPEG (Excluyente)</label>
+                                    <label id="labelFile" for="formFile" class="label-file label-input">Imagen de la inmobiliaria en PNG o JPEG (No excluyente)</label>
                                     <input class="" name="img_emp" type="file" id="formFile" accept="image/png, image/jpeg">
                                 </div>
                             </div>
@@ -77,15 +81,15 @@
                             <div class="tab">
                                 <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos del titular</p>
                                 <div class="mb-2 input-form form-block">
-                                <input type="text" name="nom_tit" autocomplete="name" required>
+                                <input type="text" name="nom_tit" required>
                                 <label class="label-input" alt="Label" data-placeholder="Nombre completo"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block">
-                                <input type="text" name="email_personal_tit" autocomplete="email" required>
+                                <input type="text" name="email_personal_tit" required>
                                 <label class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block">
-                                <input type="number" name="dni_tit" autocomplete="off" required>
+                                <div class="mb-2 input-form form-block double-line-query">
+                                <input type="number" name="dni_tit" required>
                                 <label class="label-input" alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
                                 </div>
                             </div>    
@@ -100,7 +104,7 @@
                                     <label class="label-input" data-placeholder="¿Cuántas propiedades tiene actualmente la empresa?" alt="Label"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block double-line">
-                                    <input name="cuantos_contratos" type="number"`   required>
+                                    <input name="cuantos_contratos" type="number" required>
                                     <label class="label-input" alt="Label" data-placeholder="¿Cuántos contratos tiene actualmente la empresa?"></label>
                                 </div>
                                 <div class="mb-2 select-form form-block">
@@ -122,7 +126,7 @@
                                     </select>  
                                 </div>
                                 <div class="mb-2 input-form form-block" id="dinamicHidden" hidden="">
-                                    <input type="text" name="url_integracion" autocomplete="off" id="dinamicInput" required>
+                                    <input type="text" name="url_integracion" id="dinamicInput" required>
                                     <label class="label-input" alt="Label" data-placeholder="Ingrese la URL de su pagina Web."></label>
                                 </div>
                                 <!-- ACA IRIA QUE SI NECESITA INTEGRARLA SE LA PEDIREMOS -->
@@ -138,7 +142,7 @@
                                 <div class="mb-2 select-form form-block">
                                     <div class="select-field">
                                         <label class="label-select" data-placeholder="" alt="Label">¿En qué portales publica actualmente la empresa?</label>
-                                        <input type="text" name="" placeholder="" id="" class="input-select" disabled>
+                                        <input type="text" name="" placeholder="" id="checkbox" class="input-select" disabled>
                                         <span class="down-arrow">&blacktriangledown;</span>
                                     </div>
                                     <div class="list">
@@ -146,22 +150,22 @@
                                             <input type="checkbox" value="zonaprop" id="zonaprop" class="inputCheckbox"> Zonaprop
                                         </label>
                                         <label for="argenprop" class="task">
-                                            <input type="checkbox" name="argenprop" id="argenprop" class="inputCheckbox"> Argenprop
+                                            <input type="checkbox" value="argenprop" id="argenprop" class="inputCheckbox"> Argenprop
                                         </label>
                                         <label for="mercadolibre" class="task">
-                                            <input type="checkbox" name="mercadolibre" id="mercadolibre" class="inputCheckbox"> Mercadolibre
+                                            <input type="checkbox" value="mercadolibre" id="mercadolibre" class="inputCheckbox"> Mercadolibre
                                         </label>
                                         <label for="Infocasas" class="task">
-                                            <input type="checkbox" name="infocasas" id="infocasas" class="inputCheckbox"> Infocasas
+                                            <input type="checkbox" value="infocasas" id="infocasas" class="inputCheckbox"> Infocasas
                                         </label>
                                         <label for="gallito" class="task">
-                                            <input type="checkbox" name="gallito" id="gallito" class="inputCheckbox"> El gallito
+                                            <input type="checkbox" value="gallito" id="gallito" class="inputCheckbox"> El gallito
                                         </label>
                                         <label for="buscadorprop" class="task">
-                                            <input type="checkbox" name="buscadorprop" id="buscadorprop" class="inputCheckbox"> Buscadorprop
+                                            <input type="checkbox" value="buscadorprop" id="buscadorprop" class="inputCheckbox"> Buscadorprop
                                         </label>
                                         <label for="otros" class="task">
-                                            <input type="checkbox" name="otro_portal" id="otro_portal" class="inputCheckbox"> Otros
+                                            <input type="checkbox" value="otro_portal" id="otro_portal" class="inputCheckbox"> Otros
                                         </label>
                                         <!-- SI LE DA A OTROS, TENDRA QUE ESPECIFICAR -->
                                     </div>
@@ -175,15 +179,15 @@
                                 <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos de los usuarios a ingresar al panel</p>
                                 <div id="send">
                                         <div class="mb-2 input-form form-block">
-                                        <input type="text" name="nom_user" autocomplete="name" required>
+                                        <input type="text" name="nom_user" required>
                                         <label class="label-input" alt="Label" data-placeholder="Nombre completo"></label>
                                         </div>
                                         <div class="mb-2 input-form form-block">
-                                        <input type="text" name="email_personal_user" autocomplete="email" required>
+                                        <input type="text" name="email_personal_user" required>
                                         <label class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
                                         </div>
-                                        <div class="mb-2 input-form form-block">
-                                        <input type="number" name="dni_user" autocomplete="off" required>
+                                        <div class="mb-2 input-form form-block double-line-query">
+                                        <input type="number" name="dni_user" required>
                                         <label class="label-input" alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
                                         </div>
                                 </div>
@@ -198,7 +202,7 @@
                         <div class="col-md-8 mt-2">             
                             <div class="tab">
                                 <p class="text-center" style="margin-top:1%;font-size: 40px;color: var(--main-color);font-weight: bold;">CARGANDO EMPRESA</p>
-                                <img class="align-middle" src="assets/loading.gif" style="margin-left: 40%;margin-right: 40%;" alt="">
+                                <img class="align-middle" src="assets/loading.gif" style="display: block; margin: auto;" alt="">
                             </div>
                         </div>
                     </div>
@@ -227,17 +231,14 @@
                 <p class="text-center">Por favor cerciorarse en que esten todos los datos correctamente.</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="#beginning"><button type="button" class="btn btn-gray"  data-bs-dismiss="modal" onclick="nextPrev(-1)" >Cancelar</button></a>
-                    <a href="#beginning"><button  type="button" class="btn btn-green" data-bs-dismiss="modal" aria-label="Close">Subir</button></a>
+                    <a href="#beginning"><button type="button" class="btn btn-gray"  data-bs-dismiss="modal" aria-label="Close" >Cancelar</button></a>
+                    <a href="#beginning"><button  type="button" class="btn btn-green" id="saveCompany"  onclick="previusPrev(1)" form="ingreso">Subir</button></a>
                 </div>
                 <!-- type="button" class="btn btn-green" id="saveCompany"  onclick="//submit()" form="ingreso" -->
             </div>
         </div>
     </div>
 </div>
-<footer class="bg-primary">
-    <img src="assets/logo.png" class="img-fluid" alt="Logo de Xintel" style="margin:25px;">
-</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

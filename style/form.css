@@ -1,6 +1,9 @@
 :root {
     --main-color: #4e73df;
     --main-green: #1cc88a;
+    --main-white: rgba(255, 255, 255, 0.911);
+    --main-error: rgba(255, 142, 142, 0.219);
+    --main-input-opacity:rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar {
@@ -8,30 +11,34 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: #CFCFCD;
+    background: var(--main-white);
     border-radius: 50px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #000500;
+    background-color: /* var(--main-color) */ #003363;
     border-radius: 50px;
 }
 
 body {
     font-family: 'Fira Sans', sans-serif;
-    background-color:#CFCFCD; 
+    background-image:url(https://xintel.com.ar/img/nue/fd/01.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
     color:#000500;
     min-height:919px;
     margin: 0px;
     padding: 0px;
 }
 
-footer {
+header {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 165px;
-    max-height: 76px;
+}
+
+.card {
+    background-color: var(--main-white);
 }
 
 .label-input {
@@ -51,7 +58,7 @@ select::-webkit-scrollbar-track {
 }
 
 select::-webkit-scrollbar-thumb {
-    background-color: #CFCFCD;    
+    background-color: #CFCFCD;  
     border-radius: 20px;       
     border: 3px solid var(--main-color);  
 }
@@ -75,12 +82,12 @@ input.invalid {
 }
 
 input.valid {
-    background-color: white;
+    background-color: var(--main-white);
 }
 
 .step {
-    height: 15px;
-    width: 15px;
+    height: 20px;
+    width: 20px;
     margin: 0 2px;
     background-color: #bbbbbb;
     border: none;
@@ -197,6 +204,7 @@ form {
 .form-block select:focus, .form-block select:valid {
     border-bottom: 2px solid var(--main-color);
 }
+
 /*  REVISAR */
 .label-select select:focus + label:after, .label-select select:valid + label:after {
     /* transform: translate(-7.5%, -25%) scale(0.9, 0.9); */
@@ -205,7 +213,8 @@ form {
 
 /* INPUT TEXT */
 
-.form-block input[type=text] {
+.form-block input {
+    background-color:  var(--main-input-opacity);
     box-sizing: border-box;
     width: 100%;
     border-bottom: 2px solid black;
@@ -214,11 +223,11 @@ form {
     outline: 0;
 }
 
-.form-block input[type=text] + label[data-placeholder] {
+.form-block input + label[data-placeholder] {
     pointer-events: none;
 }
 
-.form-block input[type=text] + label[data-placeholder]:after {
+.form-block input + label[data-placeholder]:after {
     content: attr(data-placeholder);
     display: block;
     position:absolute;
@@ -229,17 +238,17 @@ form {
     padding: 0 0.25rem;
 }
 
-.form-block input[type=text]:focus, .form-block input[type=text]:valid {
+.form-block input:focus, .form-block input:valid {
     border-bottom: 2px solid var(--main-color);
 }
 
-.form-block input[type=text]:focus + label[data-placeholder]:after, .form-block input[type=text]:valid + label[data-placeholder]:after {
+.form-block input:focus + label[data-placeholder]:after, .form-block input:valid + label[data-placeholder]:after {
     transform: translate(-7.5%, -25%) scale(0.9, 0.9);
     color: var(--main-color);
 }
 
 /* INPUTS NUMBER */
-
+/* 
 .form-block input[type=number] {
     box-sizing: border-box;
     width: 100%;
@@ -272,7 +281,7 @@ form {
     transform: translate(-7.5%, -25%) scale(0.9, 0.9);
     color: var(--main-color);
     background-color: none;
-}
+} */
 
 /* INPUT FILE */
 
@@ -285,8 +294,8 @@ form {
     width: 100%;
     border-bottom: 2px solid black;
     border-radius: 3px;
-    transition: all 0.5s ease-in-out;
     outline: 0;
+    padding: 0 0.25rem;
 }
 
 /* OTHERS */
@@ -309,29 +318,32 @@ form {
 
 .btn-gray {
     background-color: #909397;
-    color: white;
+    color: var(--main-white);
 }
 
 .btn-green {
     background-color: var(--main-green);
-    color: white;
+    color: var(--main-white);
 }
 
 .btn-plus {
-    display: inline-block;
+    display: block;
+    margin: auto;
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 0.25rem #4e72df60 !important;
 }
 
 .modal-footer {
     justify-content: center;
 }
 
-
-
-/* TEST */
+/* MULTISELECT */
 
 .input-select {
-    background-color: white;
-    width: 96.3% !important;
+    background-color: var(--main-white);
+    width: 94.9% !important;
 }
 
 .inputCheckbox {
@@ -360,6 +372,7 @@ form {
     display: block;
     padding-left: 0;
 }
+
 .task span{
     float: right;
     font-size: 0.6rem;
@@ -369,15 +382,34 @@ form {
 .show{
     display: block;
 }
+
 .rotate180{
     transform: rotate(-90deg);
 }
 
 /* Double line */
 
+.double-line input + label[data-placeholder]:after {
+    content: attr(data-placeholder);
+    display: block;
+    position:absolute;
+    top: -10%;
+    left: 0.5rem;
+    transform: translate(-2.5%, -40%);
+    transition: all 0.75s ease-in-out;
+    padding: 0 0.25rem;
+    margin-top: 10px;
+}
+
+.double-line input:focus + label[data-placeholder]:after, .double-line input:valid + label[data-placeholder]:after {
+    transform: translate(-7%, -70%) scale(0.9, 0.9);
+    color: var(--main-color);
+    background-color: none;
+}
+
 @media (max-width:1865px) {
 
-    .double-line input[type=text] + label[data-placeholder]:after {
+    .double-line-query input + label[data-placeholder]:after {
         content: attr(data-placeholder);
         display: block;
         position:absolute;
@@ -389,32 +421,47 @@ form {
         margin-top: 10px;
     }
     
-    .double-line input[type=text]:focus + label[data-placeholder]:after, .double-line input[type=text]:valid + label[data-placeholder]:after {
-        transform: translate(-7%, -70%) scale(0.9, 0.9);
-        color: var(--main-color);
-        background-color: none;
-    }
-
-    .double-line input[type=number] + label[data-placeholder]:after {
-        content: attr(data-placeholder);
-        display: block;
-        position:absolute;
-        top: -10%;
-        left: 0.5rem;
-        transform: translate(-2.5%, -40%);
-        transition: all 0.75s ease-in-out;
-        padding: 0 0.25rem;
-        margin-top: 10px;
-    }
-    
-    .double-line input[type=number]:focus + label[data-placeholder]:after, .double-line input[type=number]:valid + label[data-placeholder]:after {
+    .double-line-query input:focus + label[data-placeholder]:after, .double-line-query input:valid + label[data-placeholder]:after {
         transform: translate(-7%, -70%) scale(0.9, 0.9);
         color: var(--main-color);
         background-color: none;
     }
 
     .input-select {
-        background-color: white;
+        background-color: var(--main-white);
         width: 94.7% !important;
+    }
+}
+
+.initial {
+    animation-duration: 2s;
+    animation-name: slide;
+}
+
+@keyframes slide {
+    from {
+        opacity: 0;
+
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.test {
+    animation-duration: 2s;
+    animation-name: test;
+}
+
+@keyframes test {
+    from {
+        bottom: 200%;
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        margin-bottom: 0%;
     }
 }

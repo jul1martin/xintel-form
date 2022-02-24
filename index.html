@@ -22,11 +22,11 @@
 
 <div id="beginning" >
     <header>
-        <img src="assets/logo.png" class="img-fluid" alt="Logo de Xintel" style="margin:25px;">
+        <img src="assets/logo.png" class="img-fluid" alt="Logo de Xintel" style="margin:25px; width: 100px;height: 50px;">
     </header>
     <div class="card shadow mb-6" style="margin-top:50px;margin-bottom:127px; width:55%; margin-left:auto;margin-right:auto;">
-        <h1 class="text-center initial" style="margin-top:5%;font-weight: bold;" id="home">Formulario de ingreso | XINTEL</h1>
-        <p class="text-center initial" id="adv">Rellene todos los campos</p>
+        <h1 class="text-center initial" style="margin-top:5%;font-weight: bold;" id="home">Formulario de ingreso</h1>
+        <p class="text-center initial" id="adv">Rellene todos los campos.</p>
         <div id="complete-step" style="text-align:center;margin-top:40px;" class="initial">
             <span class="step"></span>
             <span class="step"></span>
@@ -67,10 +67,14 @@
                                 </div>
                                 <div class="mb-2 input-form form-block ">
                                     <input type="text" name="razon_soc" required>
-                                    <label class="label-input" alt="Label" data-placeholder="Razon social y CUIT"></label>
+                                    <label class="label-input" alt="Label" data-placeholder="Razon social"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block ">
+                                    <input type="text" name="cuit" required>
+                                    <label class="label-input" alt="Label" data-placeholder="CUIT"></label>
                                 </div>
                                 <div class="mb-2 input-form form-block">
-                                    <label id="labelFile" for="formFile" class="label-file label-input">Imagen de la inmobiliaria en PNG o JPEG (No excluyente)</label>
+                                    <label id="labelFile" for="formFile" class="label-file label-input">Logotipo de la inmobiliaria en png o jpeg</label>
                                     <input class="" name="img_emp" type="file" id="formFile" accept="image/png, image/jpeg">
                                 </div>
                             </div>
@@ -88,7 +92,7 @@
                                 <input type="text" name="email_personal_tit" required>
                                 <label class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block double-line-query">
+                                <div class="mb-2 input-form form-block">
                                 <input type="number" name="dni_tit" required>
                                 <label class="label-input" alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
                                 </div>
@@ -99,22 +103,22 @@
                         <div class="col-md-8 mt-2">             
                             <div class="tab">
                                 <p class="text-center" style="margin-top:1%;font-size: 25px;">Sistemas e integraciones.</p>
-                                <div class="mb-2 input-form form-block double-line">
+                                <div class="mb-2 input-form form-block">
                                     <input name="cuantas_propiedades" type="number" required>
                                     <label class="label-input" data-placeholder="¿Cuántas propiedades tiene actualmente la empresa?" alt="Label"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block double-line">
-                                    <input name="cuantos_contratos" type="number" required>
-                                    <label class="label-input" alt="Label" data-placeholder="¿Cuántos contratos tiene actualmente la empresa?"></label>
-                                </div>
                                 <div class="mb-2 select-form form-block">
                                     <label class="label-select" data-placeholder="" alt="Label">Sistemas que adquiere.</label>
-                                    <select class="" name="servicios" required>
+                                    <select class="" name="servicios" id="dinamicSelectAlquileres" required>
                                         <option selected disabled value="">Elija una opcion</option>
                                         <option value="Leasing">Xintel Leasing.</option>
                                         <option value="admin_alquieres">Xintel Administracion de alquileres.</option>
                                         <option value="ambos_servicios">Ambos sistemas.</option>
                                     </select>  
+                                </div>
+                                <div class="mb-2 input-form form-block" id="dinamicHiddenAlquileres" hidden="">
+                                    <input name="cuantos_contratos" type="number" required>
+                                    <label class="label-input" alt="Label" data-placeholder="¿Cuántos contratos tiene actualmente la empresa?"></label>
                                 </div>
                                 <div class="mb-2 select-form form-block">
                                     <label class="label-select" data-placeholder="" alt="Label">¿Tiene Pagina Web?</label>
@@ -176,7 +180,7 @@
                     <div class="row">
                         <div class="col-md-8 mt-2">             
                             <div class="tab">
-                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos de los usuarios a ingresar al panel</p>
+                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos de los usuarios que utilizarán el sistema</p>
                                 <div id="send">
                                         <div class="mb-2 input-form form-block">
                                         <input type="text" name="nom_user" required>
@@ -186,7 +190,7 @@
                                         <input type="text" name="email_personal_user" required>
                                         <label class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
                                         </div>
-                                        <div class="mb-2 input-form form-block double-line-query">
+                                        <div class="mb-2 input-form form-block">
                                         <input type="number" name="dni_user" required>
                                         <label class="label-input" alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
                                         </div>

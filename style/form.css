@@ -26,7 +26,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     color:#000500;
-    min-height:919px;
     margin: 0px;
     padding: 0px;
 }
@@ -34,7 +33,6 @@ body {
 header {
     display: flex;
     justify-content: center;
-    width: 100%;
 }
 
 .card {
@@ -42,11 +40,12 @@ header {
 }
 
 .label-input {
-    font-size: 20px;
+    font-size: 96%;
 }
 
 .label-select {
-    font-size: 20px;
+    font-size: 96%;
+
 }
 
 select::-webkit-scrollbar {
@@ -231,11 +230,12 @@ form {
     content: attr(data-placeholder);
     display: block;
     position:absolute;
-    top: -10%;
-    left: 0.5rem;
+    top: -20%;
+    left: 3%;
     transform: translate(-2.5%, 50%);
     transition: all 0.75s ease-in-out;
     padding: 0 0.25rem;
+    margin-top: 3%;
 }
 
 .form-block input:focus, .form-block input:valid {
@@ -343,7 +343,7 @@ form {
 
 .input-select {
     background-color: var(--main-white);
-    width: 94.9% !important;
+    width: 90% !important;
 }
 
 .inputCheckbox {
@@ -393,12 +393,12 @@ form {
     content: attr(data-placeholder);
     display: block;
     position:absolute;
-    top: -10%;
-    left: 0.5rem;
+    top: -20%;
+    left: 3%;
     transform: translate(-2.5%, -40%);
     transition: all 0.75s ease-in-out;
     padding: 0 0.25rem;
-    margin-top: 10px;
+    margin-top: 3%;
 }
 
 .double-line input:focus + label[data-placeholder]:after, .double-line input:valid + label[data-placeholder]:after {
@@ -407,18 +407,18 @@ form {
     background-color: none;
 }
 
-@media (max-width:1865px) {
+@media only screen and (min-width:1366px) and (max-width:1920px) {
 
     .double-line-query input + label[data-placeholder]:after {
         content: attr(data-placeholder);
         display: block;
         position:absolute;
-        top: -10%;
-        left: 0.5rem;
+        top: -20%;
+        left: 3%;
         transform: translate(-2.5%, -40%);
         transition: all 0.75s ease-in-out;
         padding: 0 0.25rem;
-        margin-top: 10px;
+        margin-top: 3%;
     }
     
     .double-line-query input:focus + label[data-placeholder]:after, .double-line-query input:valid + label[data-placeholder]:after {
@@ -429,7 +429,7 @@ form {
 
     .input-select {
         background-color: var(--main-white);
-        width: 94.7% !important;
+        width: 93.5% !important;
     }
 }
 
@@ -446,22 +446,5 @@ form {
 
     to {
         opacity: 1;
-    }
-}
-
-.test {
-    animation-duration: 2s;
-    animation-name: test;
-}
-
-@keyframes test {
-    from {
-        bottom: 200%;
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-        margin-bottom: 0%;
     }
 }

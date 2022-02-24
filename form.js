@@ -2,14 +2,16 @@ var tab = document.getElementsByClassName("tab");
 var bntNewUser = document.getElementById('newUser');
 var prevBtn = document.getElementById("prevBtn");
 var nextBtn = document.getElementById("nextBtn");
-var dinamicSelect = document.getElementById("dinamicSelect");
-var dinamicHidden = document.getElementById("dinamicHidden");
+var dinamicSelectIntegracion = document.getElementById("dinamicSelect");
+var dinamicHiddenIntegracion = document.getElementById("dinamicHidden");
+var dinamicSelectAlquileres = document.getElementById("dinamicSelectAlquileres");
+var dinamicHiddenAlquileres = document.getElementById("dinamicHiddenAlquileres");
 var dinamicInput = document.getElementById("dinamicInput");
 var inputCheckbox = document.getElementById("checkbox");
 var validate = false;
 var advState = false;
 var checkboxFalse = 0;
-var currentTab = 0;
+var currentTab = 2;
 var step = document.getElementsByClassName("step")[currentTab];
 var completeStep = document.getElementById("complete-step");
 var inputsArray, inputs, selectsArray, selects, validInput, validSelect;
@@ -60,7 +62,7 @@ function inputValidate(input) {
         if (!input.target.value) input.target.style.backgroundColor = "var(--main-error)";
         for (i = 0; i < inputs.length; i++) {
             if (inputs[i].type == "file" || inputs[i].disabled) continue;
-            if (dinamicInput == inputs[i] && dinamicHidden.hidden) continue;
+            if (dinamicInput == inputs[i] && dinamicHiddenIntegracion.hidden) continue;
             if (inputs[i].type == "checkbox") {
                 if (inputs[i].checked == false) checkboxFalse ++;
                 if (checkboxFalse == 7) {
@@ -118,7 +120,7 @@ function formValidate() {
     selects = tab[currentTab].getElementsByTagName("select");
 
     for (i = 0; i < inputs.length; i++) {
-        if (inputs[i].type == "file" || inputs[i].disabled || dinamicInput == inputs[i] && dinamicHidden.hidden) continue;
+        if (inputs[i].type == "file" || inputs[i].disabled || dinamicInput == inputs[i] && dinamicHiddenIntegracion.hidden) continue;
         if (inputs[i].type == "checkbox") {
             if (inputs[i].checked == false) checkboxFalse ++;
             if (checkboxFalse == 7) {
@@ -252,13 +254,24 @@ function limitLength(input) {
     return;
 }
 
-dinamicSelect.addEventListener("change", function(){
-    if (dinamicSelect.value == "integracion") {
+dinamicSelectIntegracion.addEventListener("change", function(){
+    if (dinamicSelectIntegracion.value == "integracion") {
         hiden = false; 
-        return dinamicHidden.removeAttribute("hidden");
+        return dinamicHiddenIntegracion.removeAttribute("hidden");
     }
-    if (!dinamicHidden.getAttribute("hidden")) {
+    if (!dinamicHiddenIntegracion.getAttribute("hidden")) {
         hiden = true; 
-        return dinamicHidden.setAttribute("hidden","");
+        return dinamicHiddenIntegracion.setAttribute("hidden","");
+    }
+})
+
+dinamicSelectAlquileres.addEventListener("change", function(){
+    if (dinamicSelectAlquileres.value == "admin_alquieres") {
+        hiden = false; 
+        return dinamicHiddenAlquileres.removeAttribute("hidden");
+    }
+    if (!dinamicHiddenAlquileres.getAttribute("hidden")) {
+        hiden = true; 
+        return dinamicHiddenAlquileres.setAttribute("hidden","");
     }
 })

@@ -24,7 +24,7 @@
     <header>
         <img src="assets/logo.png" class="img-fluid" alt="Logo de Xintel" style="margin:25px; width: 100px;height: 50px;">
     </header>
-    <div class="card shadow mb-6" style="margin-top:50px;margin-bottom:127px; width:55%; margin-left:auto;margin-right:auto;">
+    <div class="card shadow mb-6 form-card">
         <h1 class="text-center initial" style="margin-top:5%;font-weight: bold;" id="home">Formulario de ingreso</h1>
         <p class="text-center initial" id="adv">Rellene todos los campos.</p>
         <div id="complete-step" style="text-align:center;margin-top:40px;" class="initial">
@@ -32,68 +32,104 @@
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
-            <span class="step" hidden ></span>
+            <span class="step"></span>
         </div>
         <div class="card-body">
             <div class="form-container">
-                <form action="/new" method="POST" autocomplete="off" style="margin:0;" id="ingreso">
+                <form action="" method="POST" autocomplete="off" style="margin:0;" id="ingreso" enctype="multipart/form-data">
                     <div class="row"> 
                         <div class="col-md-8 mt-2" >
                             <div class="tab">
                                 <p class="text-center" style="font-size: 25px;">Datos de la inmobiliaria</p>
-                                <div class="mb-2 input-form form-block">
-                                    <input type="text" name="nom_imb" required>
+                                <div class="mb-2 input-form form-block double-line-responsive mono-line-responsive-1366">
+                                    <input type="text" name="nombreImb" required>
                                     <label class="label-input" alt="Label" data-placeholder="Nombre de la inmobiliaria"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block">
-                                    <input type="text" name="email_personal" required>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="gmail" name="emailPersonal" required>
                                     <label  class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block double-line-query">
-                                    <input type="text" name="email_empresa" required>
+                                <div class="mb-2 input-form form-block double-line-responsive mono-line-responsive-1366">
+                                    <input type="gmail" name="emailEmpresa" required>
                                     <label class="label-input" alt="Label" data-placeholder="Correo electronico de la empresa"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block ">
-                                    <input type="text" name="direccion" required>
-                                    <label class="label-input" alt="Label" data-placeholder="Dirección"></label>
-                                </div>
-                                <div class="mb-2 input-form form-block ">
-                                    <input type="number" name="cp" required>
-                                    <label class="label-input" alt="Label" data-placeholder="Codigo postal"></label>
-                                </div>
-                                <div class="mb-2 input-form form-block ">
-                                    <input type="text" name="localidad" required>
-                                    <label class="label-input" alt="Label" data-placeholder="Localidad"></label>
-                                </div>
-                                <div class="mb-2 input-form form-block ">
-                                    <input type="text" name="razon_soc" required>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="razonSoc" required>
                                     <label class="label-input" alt="Label" data-placeholder="Razon social"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block ">
+                                <div class="mb-2 input-form form-block mono-line-responsive">
                                     <input type="text" name="cuit" required>
                                     <label class="label-input" alt="Label" data-placeholder="CUIT"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block">
-                                    <label id="labelFile" for="formFile" class="label-file label-input">Logotipo de la inmobiliaria en png o jpeg</label>
-                                    <input class="" name="img_emp" type="file" id="formFile" accept="image/png, image/jpeg">
+                                <div class="mb-2 input-form form-block double-line-responsive mono-line-responsive-1280 mono-line-responsive-1366" >
+                                    <input type="text" name="companyImg" class="" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Logo de la inmobiliaria (URL)"></label>
                                 </div>
+                                <!-- <div class="mb-2 input-form form-block">
+                                    <label id="labelFile" for="formFile" class="label-file label-input">Logotipo de la inmobiliaria en png o jpeg</label>
+                                    <input class="" name="companyImg" type="url" id="formFile" accept="image/png, image/jpeg" > 
+                                </div> -->
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 mt-2">             
                             <div class="tab">
+                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos sucursal central</p>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="direccion" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Dirección"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="number" name="cp" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Codigo postal"></label>
+                                </div>
+                                <div class="mb-2 select-form form-block">
+                                    <label class="label-select" data-placeholder="" alt="Label">Pais</label>
+                                    <select class="" name="pais" required>
+                                        <option selected disabled value="">Elija una opcion</option>
+                                        <option value="Argentina">Argentina</option>
+                                        <option value="Uruguay">Uruguay</option>
+                                        <option value="Paraguay">Paraguay</option>
+                                    </select>  
+                                </div>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="provincia" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Provincia"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="ciudad" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Ciudad"></label>
+                                </div>                                
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="localidad" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Localidad"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="piso" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Piso"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="oficina" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Oficina"></label>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 mt-2">             
+                            <div class="tab">
                                 <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos del titular</p>
-                                <div class="mb-2 input-form form-block">
-                                <input type="text" name="nom_tit" required>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                <input type="text" name="nomTitular" required>
                                 <label class="label-input" alt="Label" data-placeholder="Nombre completo"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block">
-                                <input type="text" name="email_personal_tit" required>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                <input type="gmail" name="emailPersonalTit" required>
                                 <label class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block">
-                                <input type="number" name="dni_tit" required>
+                                <div class="mb-2 input-form form-block double-line-responsive mono-line-responsive-1366">
+                                <input type="number" name="dniPersonalTit" required>
                                 <label class="label-input" alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
                                 </div>
                             </div>    
@@ -102,35 +138,35 @@
                     <div class="row">
                         <div class="col-md-8 mt-2">             
                             <div class="tab">
-                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Sistemas e integraciones.</p>
-                                <div class="mb-2 input-form form-block">
-                                    <input name="cuantas_propiedades" type="number" required>
+                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Sistemas e integraciones</p>
+                                <div class="mb-2 input-form form-block double-line-responsive">
+                                    <input name="cuantasPropiedades" type="number" required>
                                     <label class="label-input" data-placeholder="¿Cuántas propiedades tiene actualmente la empresa?" alt="Label"></label>
                                 </div>
                                 <div class="mb-2 select-form form-block">
-                                    <label class="label-select" data-placeholder="" alt="Label">Sistemas que adquiere.</label>
+                                    <label class="label-select" data-placeholder="" alt="Label">Sistemas que adquiere</label>
                                     <select class="" name="servicios" id="dinamicSelectAlquileres" required>
                                         <option selected disabled value="">Elija una opcion</option>
-                                        <option value="Leasing">Xintel Leasing.</option>
-                                        <option value="admin_alquieres">Xintel Administracion de alquileres.</option>
-                                        <option value="ambos_servicios">Ambos sistemas.</option>
+                                        <option value="XintelWeb">Xintel Leasing</option>
+                                        <option value="Administracion de alquileres">Xintel Administracion de alquileres</option>
+                                        <option value="ambos_servicios">Ambos sistemas</option>
                                     </select>  
                                 </div>
-                                <div class="mb-2 input-form form-block" id="dinamicHiddenAlquileres" hidden="">
-                                    <input name="cuantos_contratos" type="number" required>
+                                <div class="mb-2 input-form form-block double-line-responsive" id="dinamicHiddenAlquileres" hidden="">
+                                    <input name="cuantosContratos" type="number" id="dinamicInputAlquileres" required>
                                     <label class="label-input" alt="Label" data-placeholder="¿Cuántos contratos tiene actualmente la empresa?"></label>
                                 </div>
                                 <div class="mb-2 select-form form-block">
                                     <label class="label-select" data-placeholder="" alt="Label">¿Tiene Pagina Web?</label>
-                                    <select class="" name="pag_web" id="dinamicSelect" required>
+                                    <select class="" name="pagWeb" id="dinamicSelect" required>
                                         <option selected disabled value="">Elija una opcion</option>
-                                        <option value="xinte_web">En proceso con Xintel.</option>
+                                        <option value="xintel_web">En proceso con Xintel.</option>
                                         <option value="integracion">Necesito integrarla.</option>
-                                        <option value="no_web">No utilizo.</option>
+                                        <option value="">No utilizo.</option>
                                     </select>  
-                                </div>
-                                <div class="mb-2 input-form form-block" id="dinamicHidden" hidden="">
-                                    <input type="text" name="url_integracion" id="dinamicInput" required>
+                                </div> 
+                                <div class="mb-2 input-form form-block double-line-responsive mono-line-responsive-800 mono-line-responsive-1366" id="dinamicHidden" hidden="">
+                                    <input type="text" name="urlIntegracion" id="dinamicInputIntegration" required> 
                                     <label class="label-input" alt="Label" data-placeholder="Ingrese la URL de su pagina Web."></label>
                                 </div>
                                 <!-- ACA IRIA QUE SI NECESITA INTEGRARLA SE LA PEDIREMOS -->
@@ -138,38 +174,38 @@
                                     <label class="label-select" data-placeholder="" alt="Label">¿Precisa realizar migraciones?</label>
                                     <select class="" name="migraciones" required>
                                         <option selected disabled value="">Elija una opcion</option>
-                                        <option value="no">No, las cargaremos manualmente.</option>
-                                        <option value="si_zonaprop">Si, desde Zonaprop.</option>
-                                        <option value="si_mercadolibre">Si, desde Mercado Libre.</option>
+                                        <option value="no">No, las cargaremos manualmente</option>
+                                        <option value="si_zonaprop">Si, desde Zonaprop</option>
+                                        <option value="si_mercadolibre">Si, desde Mercado Libre</option>
                                     </select>  
                                 </div>
-                                <div class="mb-2 select-form form-block">
+                                <div class="mb-2 input-form form-block">
                                     <div class="select-field">
                                         <label class="label-select" data-placeholder="" alt="Label">¿En qué portales publica actualmente la empresa?</label>
-                                        <input type="text" name="" placeholder="" id="checkbox" class="input-select" disabled>
+                                        <input type="text" name="portales"  placeholder="" id="checkbox" class="input-select" readonly>
                                         <span class="down-arrow">&blacktriangledown;</span>
                                     </div>
                                     <div class="list">
                                         <label for="zonaprop" class="task">
-                                            <input type="checkbox" value="zonaprop" id="zonaprop" class="inputCheckbox"> Zonaprop
+                                            <input type="checkbox" value="Zonaprop" name="zonaprop" class="inputCheckbox"> Zonaprop
                                         </label>
                                         <label for="argenprop" class="task">
-                                            <input type="checkbox" value="argenprop" id="argenprop" class="inputCheckbox"> Argenprop
+                                            <input type="checkbox" value="Argenprop" name="argenprop" class="inputCheckbox"> Argenprop
                                         </label>
                                         <label for="mercadolibre" class="task">
-                                            <input type="checkbox" value="mercadolibre" id="mercadolibre" class="inputCheckbox"> Mercadolibre
+                                            <input type="checkbox" value="Mercado Libre" name="mercadolibre" class="inputCheckbox"> Mercadolibre
                                         </label>
                                         <label for="Infocasas" class="task">
-                                            <input type="checkbox" value="infocasas" id="infocasas" class="inputCheckbox"> Infocasas
+                                            <input type="checkbox" value="Infocasas" name="infocasas" class="inputCheckbox"> Infocasas
                                         </label>
                                         <label for="gallito" class="task">
-                                            <input type="checkbox" value="gallito" id="gallito" class="inputCheckbox"> El gallito
+                                            <input type="checkbox" value="Gallito" name="gallito" class="inputCheckbox"> El gallito
                                         </label>
                                         <label for="buscadorprop" class="task">
-                                            <input type="checkbox" value="buscadorprop" id="buscadorprop" class="inputCheckbox"> Buscadorprop
+                                            <input type="checkbox" value="Buscadorprop" name="buscadorprop" class="inputCheckbox"> Buscadorprop
                                         </label>
                                         <label for="otros" class="task">
-                                            <input type="checkbox" value="otro_portal" id="otro_portal" class="inputCheckbox"> Otros
+                                            <input type="checkbox" value="Otros" name="otro_portal" class="inputCheckbox"> Otros
                                         </label>
                                         <!-- SI LE DA A OTROS, TENDRA QUE ESPECIFICAR -->
                                     </div>
@@ -181,33 +217,12 @@
                         <div class="col-md-8 mt-2">             
                             <div class="tab">
                                 <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos de los usuarios que utilizarán el sistema</p>
-                                <div id="send">
-                                        <div class="mb-2 input-form form-block">
-                                        <input type="text" name="nom_user" required>
-                                        <label class="label-input" alt="Label" data-placeholder="Nombre completo"></label>
-                                        </div>
-                                        <div class="mb-2 input-form form-block">
-                                        <input type="text" name="email_personal_user" required>
-                                        <label class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
-                                        </div>
-                                        <div class="mb-2 input-form form-block">
-                                        <input type="number" name="dni_user" required>
-                                        <label class="label-input" alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
-                                        </div>
-                                </div>
-                                <button type="button"  title="Añadir otro usuario" class="btn btn-plus" id="newUser"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <div id="send"></div>
+                                <!-- <button type="button"  title="Añadir otro usuario" class="btn btn-plus" id="newUser"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                </svg></button>
+                                </svg></button> -->
                             </div>    
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 mt-2">             
-                            <div class="tab">
-                                <p class="text-center" style="margin-top:1%;font-size: 40px;color: var(--main-color);font-weight: bold;">CARGANDO EMPRESA</p>
-                                <img class="align-middle" src="assets/loading.gif" style="display: block; margin: auto;" alt="">
-                            </div>
                         </div>
                     </div>
                     <div style="overflow:auto; margin: 50px 25px 25px 0px;" >
@@ -230,15 +245,18 @@
                     <h5 class="modal-title">Cargar empresa.</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                <p class="text-center">¿Está seguro en terminar el formulario?</p>
-                <p class="text-center">Por favor cerciorarse en que esten todos los datos correctamente.</p>
+                <div class="modal-body text-center">
+                    <div id="advSave">
+                        <p>¿Está seguro en terminar el formulario?</p>
+                        <p>Por favor cersiorarse en que esten todos los datos correctamente.</p>
+                    </div>
+                    <img src="" alt="" id="resultadoImg">
+                    <p id="resultadoTxt" hidden="true">Error! Por favor, revisa haber colocado los datos correctos (E-mail completo, formato de datos pedidos)</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="#beginning"><button type="button" class="btn btn-gray"  data-bs-dismiss="modal" aria-label="Close" >Cancelar</button></a>
-                    <a href="#beginning"><button  type="button" class="btn btn-green" id="saveCompany"  onclick="previusPrev(1)" form="ingreso">Subir</button></a>
+                    <a href="#beginning"><button type="button" class="btn btn-gray" id="cancelSubmit"  data-bs-dismiss="modal" aria-label="Close">Cancelar</button></a>
+                    <a href="#beginning"><button  type="button" class="btn btn-green" id="saveCompany"form="ingreso">Subir</button></a>
                 </div>
-                <!-- type="button" class="btn btn-green" id="saveCompany"  onclick="//submit()" form="ingreso" -->
             </div>
         </div>
     </div>
@@ -249,8 +267,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-
-
 <script>
     $(function() {
     $('[data-toggle="tooltip"]').tooltip()
@@ -262,9 +278,14 @@
     document.querySelector('.select-field').addEventListener('click',()=>{
         document.querySelector('.list').classList.toggle('show');
         document.querySelector('.down-arrow').classList.toggle('rotate180');
-
     });
+
+    // var token =  {!! json_encode($form->token) !!};
+    // var nUsers =  {!! json_encode($form->n_users) !!};
+    // var code =  {!! json_encode($form->codigo) !!};
+
 </script>
 <script src="form.js"></script>
+
 </body>
 </html>

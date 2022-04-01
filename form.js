@@ -1,56 +1,83 @@
 var tab = document.getElementsByClassName("tab");
-var bntNewUser = document.getElementById('newUser');
 var prevBtn = document.getElementById("prevBtn");
 var nextBtn = document.getElementById("nextBtn");
-var dinamicSelectIntegracion = document.getElementById("dinamicSelect");
-var dinamicHiddenIntegracion = document.getElementById("dinamicHidden");
+var saveCompanyBtn = document.getElementById('saveCompany');
+var dinamicSelectIntegration = document.getElementById("dinamicSelect");
+var dinamicHiddenIntegration = document.getElementById("dinamicHidden");
 var dinamicSelectAlquileres = document.getElementById("dinamicSelectAlquileres");
 var dinamicHiddenAlquileres = document.getElementById("dinamicHiddenAlquileres");
-var dinamicInput = document.getElementById("dinamicInput");
+var dinamicInputIntegration = document.getElementById("dinamicInputIntegration");
+var dinamicInputAlquileres = document.getElementById("dinamicInputAlquileres");
 var inputCheckbox = document.getElementById("checkbox");
+var cancelSubmit = document.getElementById('cancelSubmit');
+var advSave = document.getElementById('advSave');
+var responseImg = document.getElementById('resultadoImg');
+var responseTxt = document.getElementById('resultadoTxt');
 var validate = false;
 var advState = false;
+var sent = false;
 var checkboxFalse = 0;
-var currentTab = 2;
+var currentTab = 3;
 var step = document.getElementsByClassName("step")[currentTab];
 var completeStep = document.getElementById("complete-step");
-var inputsArray, inputs, selectsArray, selects, validInput, validSelect;
-var modalSave = new bootstrap.Modal(document.getElementById('modalSave'),{})
-nextBtn.addEventListener("click",function(){nextPrev(1)})
-prevBtn.addEventListener("click",function(){previusPrev(-1)})
-bntNewUser.addEventListener('click', newUser);
+var inputsArray, inputs, selectsArray, selects, validInput, validSelect, checkbox, checkboxArray;
+var modalSave = new bootstrap.Modal(document.getElementById('modalSave'),{});
+var nUsers = 3; // Esto se otorga por base de datos.
+// var url = "http://127.0.0.1:8000/api/formularios/"+token;
+var form,formIsValid;
 
+nextBtn.addEventListener("click",function(){nextPrev(1)});
+prevBtn.addEventListener("click",function(){previusPrev(-1)});
+saveCompanyBtn.addEventListener('click',saveForm);
+cancelSubmit.addEventListener('click', function() {
+    advSave.hidden = false;
+    responseTxt.hidden = true;
+});
+// window.addEventListener('load',isFormValid);
 
-showTab(currentTab);
+for(var i = 0; i < nUsers; i++) {
+    if(i+1 == nUsers) {
+        newUser(i, true); 
+        continue;
+    }
+    newUser(i, false);
+}
 
-
+// async function isFormValid() {
+//     var form = await fetch(url).then(response => ( response.json() )).then(data => ( formIsValid = data )).catch(error => (console.log(error)));
+//     if(formIsValid) {
+//         return showTab(currentTab);
+//     } else {
+//         return location.replace('http://127.0.0.1:8000/formularios/creacion/error');
+//     }
+// }
 function showTab(n) {
     tab[n].style.display = "block";
-    tab[n].className += " initial"
+    tab[n].className += " initial";
     prevBtn.style.display = "inline";
     nextBtn.innerHTML = "Siguiente";
     
-    var inputFile = document.getElementById("formFile");
+    // var inputFile = document.getElementById("formFile");
     var labelFile = document.getElementById("labelFile");
     if (n == 0) prevBtn.style.display = "none";
-    if (n == (tab.length - 2)) nextBtn.innerHTML = "Cargar empresa"; // tab.length-1 
-    if (n == (tab.length - 1)) {
-        completeStep.style.display = "none";
-        nextBtn.style.display = "none";
-        prevBtn.style.display = "none";
-    }
+    if (n == (tab.length - 1)) nextBtn.innerHTML = "Cargar empresa";
+
     selects = tab[currentTab].getElementsByTagName("select");
     selectsArray = Array.from(selects);
     inputs = tab[currentTab].getElementsByTagName("input");
     inputsArray = Array.from(inputs);
+    checkboxs = tab[currentTab].getElementsByClassName("inputCheckbox");
+    checkboxArray = Array.from(checkboxs);
 
     if(!selectsArray.length) validSelect = true;
 
     inputsArray.forEach(input => { input.addEventListener("input",inputValidate) });
     inputsArray.forEach(input => { input.addEventListener("input",function() {limitLength(input)})});
     selectsArray.forEach(select => { select.addEventListener("click",selectValidate) });
+    checkboxArray.forEach(checkbox => { checkbox.addEventListener("change",updateCheckbox) });
 
-    inputFile.addEventListener("input",function(){ if (inputFile.value) labelFile.style.borderBottom = "2px solid var(--main-color)"; })
+
+    // inputFile.addEventListener("input",function(){ if (inputFile.value) labelFile.style.borderBottom = "2px solid var(--main-color)"; });
     stepIndicator(n);
 }
 
@@ -62,7 +89,7 @@ function inputValidate(input) {
         if (!input.target.value) input.target.style.backgroundColor = "var(--main-error)";
         for (i = 0; i < inputs.length; i++) {
             if (inputs[i].type == "file" || inputs[i].disabled) continue;
-            if (dinamicInput == inputs[i] && dinamicHiddenIntegracion.hidden) continue;
+            if (dinamicInputIntegration == inputs[i] && dinamicHiddenIntegration.hidden ||  dinamicHiddenAlquileres.hidden) continue;
             if (inputs[i].type == "checkbox") {
                 if (inputs[i].checked == false) checkboxFalse ++;
                 if (checkboxFalse == 7) {
@@ -120,7 +147,7 @@ function formValidate() {
     selects = tab[currentTab].getElementsByTagName("select");
 
     for (i = 0; i < inputs.length; i++) {
-        if (inputs[i].type == "file" || inputs[i].disabled || dinamicInput == inputs[i] && dinamicHiddenIntegracion.hidden) continue;
+        if (inputs[i].type == "file" || inputs[i].disabled || inputs[i].hidden ||  dinamicInputAlquileres == inputs[i] && dinamicHiddenAlquileres.hidden || dinamicInputIntegration == inputs[i] && dinamicHiddenIntegration.hidden || inputs[i].name == "piso" || inputs[i].name == "oficina") continue;
         if (inputs[i].type == "checkbox") {
             if (inputs[i].checked == false) checkboxFalse ++;
             if (checkboxFalse == 7) {
@@ -151,7 +178,7 @@ function formValidate() {
                 advState = false;
             } 
     }
-
+    
     for (i = 0; i < selects.length; i++) {
         if (!selects[i].value) {
             selects[i].style.backgroundColor = "var(--main-error)";
@@ -184,7 +211,7 @@ function formValidate() {
 function nextPrev(n) {
     if (n == 1 && !formValidate()) return false;
     validate = false;
-    if (currentTab >= tab.length - 2) {
+    if (currentTab >= tab.length - 1) {
         modalSave.show();
         return
     }
@@ -203,30 +230,28 @@ function previusPrev(n) {
     showTab(currentTab);
 }
 
-function newUser(e) {
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    
-    var numSelectsName = 0;
+function newUser(id, lastOne) {
     var send = document.getElementById('send');
     var divSend = document.createElement("div");
-    divSend.className += " test";
-    numSelectsName++;
 
-    divSend.innerHTML =
-    `<div class="divisor"></div>
-    <div class="mb-2 input-form form-block">
-    <input type="text" name="nom_user`+numSelectsName+`" autocomplete="name" required>
+    operatorData = `<div class="mb-2 input-form form-block mono-line-responsive">
+    <input type="text" name="OperatorName`+id+`" autocomplete="name" id="test" required>
     <label class="label-input" alt="Label" data-placeholder="Nombre completo"></label>
     </div>
-    <div class="mb-2 input-form form-block">
-    <input type="text" name="email_personal_user`+numSelectsName+`" autocomplete="email" required>
+    <div class="mb-2 input-form form-block mono-line-responsive">
+    <input type="text" name="OperatorEmail`+id+`" autocomplete="email" required>
     <label class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
     </div>
-    <div class="mb-2 input-form form-block">
-    <input type="number" name="dni_user`+numSelectsName+`" autocomplete="off" required>
+    <div class="mb-2 input-form form-block double-line-responsive mono-line-responsive-1366" style="margin-bottom:12vh !important;">
+    <input type="number" name="OperatorDni`+id+`" autocomplete="off" required>
     <label class="label-input" alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
-    </div>`;
+    </div>`
+
+    if(!lastOne) operatorData = operatorData + `<div class="divisor"></div>`
+
+    divSend.innerHTML = operatorData
+
+    //<div class="divisor"></div>`;
     send.appendChild(divSend);
 
     return showTab(currentTab);
@@ -250,23 +275,35 @@ function limitLength(input) {
         case "dni_user":
             if (input.value.length > 9) input.value = input.value.slice(0,9);
             break;
+        case "dniPersonalTit":
+            if (input.value.length > 9) input.value = input.value.slice(0,9);
+            break;
+        case "OperatorDni0":
+            if (input.value.length > 9) input.value = input.value.slice(0,9);
+            break;
+        case "OperatorDni1":
+            if (input.value.length > 9) input.value = input.value.slice(0,9);
+            break;
+        case "OperatorDni2":
+            if (input.value.length > 9) input.value = input.value.slice(0,9);
+            break;
     }
     return;
 }
 
-dinamicSelectIntegracion.addEventListener("change", function(){
-    if (dinamicSelectIntegracion.value == "integracion") {
+dinamicSelectIntegration.addEventListener("change", function(){
+    if (dinamicSelectIntegration.value == "integracion") {
         hiden = false; 
-        return dinamicHiddenIntegracion.removeAttribute("hidden");
+        return dinamicHiddenIntegration.removeAttribute("hidden");
     }
-    if (!dinamicHiddenIntegracion.getAttribute("hidden")) {
+    if (!dinamicHiddenIntegration.getAttribute("hidden")) {
         hiden = true; 
-        return dinamicHiddenIntegracion.setAttribute("hidden","");
+        return dinamicHiddenIntegration.setAttribute("hidden","");
     }
 })
 
 dinamicSelectAlquileres.addEventListener("change", function(){
-    if (dinamicSelectAlquileres.value == "admin_alquieres") {
+    if (dinamicSelectAlquileres.value == "Administracion de alquileres" || dinamicSelectAlquileres.value == "ambos_servicios") {
         hiden = false; 
         return dinamicHiddenAlquileres.removeAttribute("hidden");
     }
@@ -275,3 +312,28 @@ dinamicSelectAlquileres.addEventListener("change", function(){
         return dinamicHiddenAlquileres.setAttribute("hidden","");
     }
 })
+
+function updateCheckbox(checkbox) {
+    if (!checkbox.target.checked && inputCheckbox.value) {
+        inputCheckbox.value = inputCheckbox.value.replace(checkbox.target.value + ", ","");
+        inputCheckbox.value = inputCheckbox.value.replace(", " + checkbox.target.value ,"");
+        inputCheckbox.value = inputCheckbox.value.replace(checkbox.target.value,"");
+    }
+    if (!checkbox.target.checked) return;
+    if (!inputCheckbox.value) return inputCheckbox.value = checkbox.target.value;
+    console.log(checkbox.target.value);
+    
+    return inputCheckbox.value = inputCheckbox.value + ", " + checkbox.target.value;
+}
+
+function saveForm(e) {
+    var checkboxes = document.getElementsByClassName('inputCheckbox');
+    var checkboxes = Array.from(checkboxes);
+    checkboxes.forEach(checkbox => {
+        if(checkbox.checked) return checkbox.value = true;
+    });
+
+    console.log('METODO AJAX');
+
+    e.preventDefault();
+}

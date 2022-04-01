@@ -35,8 +35,20 @@ header {
     justify-content: center;
 }
 
+a {
+    text-decoration: none
+}
+
 .card {
     background-color: var(--main-white);
+}
+
+.form-card {
+    margin-top:50px;
+    margin-bottom:127px; 
+    width: 55%; 
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .label-input {
@@ -230,9 +242,8 @@ form {
     content: attr(data-placeholder);
     display: block;
     position:absolute;
-    top: -20%;
+    top: 10%;
     left: 3%;
-    transform: translate(-2.5%, 50%);
     transition: all 0.75s ease-in-out;
     padding: 0 0.25rem;
     margin-top: 3%;
@@ -243,45 +254,9 @@ form {
 }
 
 .form-block input:focus + label[data-placeholder]:after, .form-block input:valid + label[data-placeholder]:after {
-    transform: translate(-7.5%, -25%) scale(0.9, 0.9);
+    transform: translate(-7.5%, -90%) scale(0.9, 0.9);
     color: var(--main-color);
 }
-
-/* INPUTS NUMBER */
-/* 
-.form-block input[type=number] {
-    box-sizing: border-box;
-    width: 100%;
-    border-bottom: 2px solid black;
-    border-radius: 3px;
-    transition: all 0.5s ease-in-out;
-    outline: 0;
-}
-
-.form-block input[type=number] + label[data-placeholder] {
-    pointer-events: none;
-}
-
-.form-block input[type=number] + label[data-placeholder]:after {
-    content: attr(data-placeholder);
-    display: block;
-    position:absolute;
-    top: -15%;
-    left: 0.5rem;
-    transform: translate(-2.5%, 50%);
-    transition: all 0.75s ease-in-out;
-    padding: 0 0.25rem;
-}
-
-.form-block input[type=number]:focus, .form-block input[type=number]:valid {
-    border-bottom: 2px solid var(--main-color);
-}
-
-.form-block input[type=number]:focus + label[data-placeholder]:after, .form-block input[type=number]:valid + label[data-placeholder]:after {
-    transform: translate(-7.5%, -25%) scale(0.9, 0.9);
-    color: var(--main-color);
-    background-color: none;
-} */
 
 /* INPUT FILE */
 
@@ -301,12 +276,11 @@ form {
 /* OTHERS */
 
 .divisor {
-    border: 1px solid var(--main-color);
+    border: 1px solid #006193;
     border-radius: 2px;
     margin: 50px auto 50px auto;
     position: relative;
-    width: 75%;
-    width: auto;
+    width: 60%;
 }
 
 #adv {
@@ -364,9 +338,6 @@ form {
     display: inline-block;
     cursor: pointer;
     transition: 0.2s linear;
-    /* border-bottom: 2px solid black;
-    border-bottom-right-radius: 2px solid black; */
-
 }
 .task{
     display: block;
@@ -387,49 +358,143 @@ form {
     transform: rotate(-90deg);
 }
 
-/* Double line */
+@media only screen and (max-width:1366px) and (min-width:1281px){
 
-.double-line input + label[data-placeholder]:after {
-    content: attr(data-placeholder);
-    display: block;
-    position:absolute;
-    top: -20%;
-    left: 3%;
-    transform: translate(-2.5%, -40%);
-    transition: all 0.75s ease-in-out;
-    padding: 0 0.25rem;
-    margin-top: 3%;
-}
+    
+    .mono-line-responsive  input + label[data-placeholder]:after, .mono-line-responsive-1366  input + label[data-placeholder]:after{
+        top: 20% !important;
+    }
 
-.double-line input:focus + label[data-placeholder]:after, .double-line input:valid + label[data-placeholder]:after {
-    transform: translate(-7%, -70%) scale(0.9, 0.9);
-    color: var(--main-color);
-    background-color: none;
-}
+    .mono-line-responsive input:focus + label[data-placeholder]:after, .mono-line-responsive input:valid + label[data-placeholder]:after, .mono-line-responsive-1366 input:focus + label[data-placeholder]:after, .mono-line-responsive-1366 input:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -80%) scale(0.9, 0.9)!important;
+    }
 
-@media only screen and (min-width:1366px) and (max-width:1920px) {
-
-    .double-line-query input + label[data-placeholder]:after {
-        content: attr(data-placeholder);
-        display: block;
-        position:absolute;
-        top: -20%;
-        left: 3%;
-        transform: translate(-2.5%, -40%);
-        transition: all 0.75s ease-in-out;
-        padding: 0 0.25rem;
-        margin-top: 3%;
+    .double-line-responsive input + label[data-placeholder]:after {
+        top: -40%;
     }
     
-    .double-line-query input:focus + label[data-placeholder]:after, .double-line-query input:valid + label[data-placeholder]:after {
-        transform: translate(-7%, -70%) scale(0.9, 0.9);
-        color: var(--main-color);
-        background-color: none;
+    .double-line-responsive input:focus + label[data-placeholder]:after, .double-line-responsive input:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -30%) scale(0.9, 0.9);
+    }
+
+}
+
+@media only screen and (max-width:1280px) and (min-width:801px) {
+    body {
+        background-size: 900%;
+    }
+    
+    .form-card {
+        width: 70%;
+    }
+
+    .mono-line-responsive  input + label[data-placeholder]:after, .mono-line-responsive-1280  input + label[data-placeholder]:after{
+        top: 30% !important;
+    }
+
+    .mono-line-responsive input:focus + label[data-placeholder]:after, .mono-line-responsive input:valid + label[data-placeholder]:after, .mono-line-responsive-1280 input:focus + label[data-placeholder]:after, .mono-line-responsive-1280 input:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -100%) scale(0.9, 0.9)!important;
+    }
+
+    .double-line-responsive input + label[data-placeholder]:after {
+        top: -40%;
+    }
+    
+    .double-line-responsive input:focus + label[data-placeholder]:after, .double-line-responsive input:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -30%) scale(0.9, 0.9);
+    }
+    
+    .input-form {
+        margin-top: 12vh;
+    }
+
+    .select-form {
+        margin-top: 12vh;
     }
 
     .input-select {
-        background-color: var(--main-white);
-        width: 93.5% !important;
+        width: 87% !important;
+    }
+}
+
+@media only screen and (max-width:800px) and (min-width:481px) {
+    body {
+        background-size: 900%;
+    }
+    
+    .form-card {
+        width: 80%;
+    }
+
+    .mono-line-responsive input + label[data-placeholder]:after, .mono-line-responsive-800  input + label[data-placeholder]:after{
+        top: 30%;
+    }
+
+    .mono-line-responsive input:focus + label[data-placeholder]:after, .mono-line-responsive input:valid + label[data-placeholder]:after, .mono-line-responsive-800 input:focus + label[data-placeholder]:after, .mono-line-responsive-800 input:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -100%) scale(0.9, 0.9);
+    }
+
+    .double-line-responsive input + label[data-placeholder]:after {
+        top: -40%;
+    }
+    
+    .double-line-responsive input:focus + label[data-placeholder]:after, .double-line-responsive input:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -30%) scale(0.9, 0.9);
+    }
+    
+    .input-form {
+        margin-top: 12vh;
+    }
+
+    .select-form {
+        margin-top: 12vh;
+    }
+
+    .input-select {
+        width: 87% !important;
+    }
+}
+
+@media only screen and (max-width:480px) {
+    body {
+        background-size: 900%;
+    }
+    
+    .form-card {
+        width: 80%;
+    }
+
+    .mono-line-responsive  input + label[data-placeholder]:after{
+        top: 40% !important;
+    }
+
+    .mono-line-responsive  input + label[data-placeholder]:after{
+        top: -10%;
+        transform: translate(-2.5%, -1.5vh);
+    }
+
+    .mono-line-responsive input:focus + label[data-placeholder]:after, .mono-line-responsive input:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -120%) scale(0.9, 0.9);
+    }
+    
+    .double-line-responsive input + label[data-placeholder]:after {
+        top: -30%;
+    }
+    
+    .double-line-responsive input:focus + label[data-placeholder]:after, .double-line-responsive input:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -40%) scale(0.9, 0.9);
+    }
+
+    .input-form {
+        margin-top: 12vh;
+    }
+
+    .select-form {
+        margin-top: 12vh;
+    }
+
+    .input-select {
+        width: 87% !important;
     }
 }
 

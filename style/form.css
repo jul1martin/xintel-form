@@ -455,7 +455,7 @@ form {
     }
 }
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width:480px) and (min-width:421px){
     body {
         background-size: 900%;
     }
@@ -483,6 +483,52 @@ form {
     
     .double-line-responsive input:focus + label[data-placeholder]:after, .double-line-responsive input:valid + label[data-placeholder]:after {
         transform: translate(-7%, -40%) scale(0.9, 0.9);
+    }
+
+    .input-form {
+        margin-top: 12vh;
+    }
+
+    .select-form {
+        margin-top: 12vh;
+    }
+
+    .input-select {
+        width: 87% !important;
+    }
+}
+
+@media only screen and (max-width:420px) {
+    body {
+        background-size: 900%;
+    }
+    
+    .form-card {
+        width: 80%;
+    }
+
+    .mono-line-responsive  input + label[data-placeholder]:after, .mono-line-responsive-420  input + label[data-placeholder]:after{
+        top: 40% !important;
+    }
+
+    .mono-line-responsive input:focus + label[data-placeholder]:after, .mono-line-responsive input:valid + label[data-placeholder]:after, .mono-line-responsive-420 input:focus + label[data-placeholder]:after, .mono-line-responsive input:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -120%) scale(0.9, 0.9);
+    }
+    
+    .double-line-responsive input + label[data-placeholder]:after, .double-line-responsive-420 input + label[data-placeholder]:after {
+        top: -20% !important;
+    }
+    
+    .double-line-responsive input:focus + label[data-placeholder]:after, .double-line-responsive input:valid + label[data-placeholder]:after, .double-line-responsive-420 input:focus + label[data-placeholder]:after, .double-line-responsive-420 input:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -50%) scale(0.9, 0.9);
+    }
+
+    .tri-line-responsive-420 input + label[data-placeholder]:after {
+        top: -90% !important;
+    }
+    
+    .tri-line-responsive-420 input:focus + label[data-placeholder]:after, .tri-line-responsive-420 input:valid + label[data-placeholder]:after {
+        transform: translate(-7%, -20%) scale(0.9, 0.9);
     }
 
     .input-form {

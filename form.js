@@ -289,54 +289,54 @@ function saveForm(e) {
         if(checkbox.checked) return checkbox.value = true;
     });
 
-    $.ajax({
-        url: 'http://127.0.0.1:8000/api/formularios/verificacion',
-        method: 'post',
-        data: {
-            token: token,
-            name: $('input[name=nombreImb]').val(),
-            sended_email: $('input[name=emailPersonal]').val(),
-            company_email: $('input[name=emailEmpresa]').val(),
-            adress: $('input[name=direccion]').val(),
-            postal_code: $('input[name=cp]').val(),
-            country: $('select[name=pais]').val(),
-            province: $('input[name=provincia]').val(),
-            city: $('input[name=ciudad]').val(),
-            locality: $('input[name=localidad]').val(),
-            floor: $('input[name=piso]').val(),
-            ofice: $('input[name=oficina]').val(),
-            social_reason: $('input[name=razonSoc]').val(),
-            cuit: $('input[name=cuit]').val(),
-            company_img: $('input[name=companyImg]').val(),
-            owner_name: $('input[name=nomTitular]').val(),
-            owner_email: $('input[name=emailPersonalTit]').val(),
-            owner_dni: $('input[name=dniPersonalTit]').val(),
-            props: $('input[name=cuantasPropiedades]').val(),
-            services: $('select[name=servicios]').val(),
-            contracts: $('input[name=cuantosContratos]').val(),
-            web_site: $('input[name=urlIntegracion]').val(),
-            migrations: $('select[name=migraciones]').val(),
-            user_zonaprop: $('input[name=userZonaprop]').val(),
-            pass_zonaprop: $('input[name=passZonaprop]').val(),
-            user_mercadoL: $('input[name=userMercadolibre]').val(),
-            pass_mercadoL: $('input[name=passMercadolibre]').val(),
-            portals: $('input[name=portales]').val(),
-            portalZonaprop: $('input[name=portales]').val(),
-            portalMercadoL: $('input[type="checkbox"][name="mercadolibre"]:checked').val(),
-        },
-        beforeSend: function(){
-            advSave.hidden = true;
-            responseImg.src = "assets/loading.gif";
-        },
-        success: function(response) {
-            // location.replace('http://127.0.0.1:8000/formularios/creacion/registered');
-            console.log(response)
-        },
-        error: function(response) {
-            responseImg.src = "";
-            responseTxt.hidden = false;
-        }
-    });
+    // $.ajax({
+    //     url: 'http://127.0.0.1:8000/api/formularios/verificacion',
+    //     method: 'post',
+    //     data: {
+    //         token: token,
+    //         name: $('input[name=nombreImb]').val(),
+    //         sended_email: $('input[name=emailPersonal]').val(),
+    //         company_email: $('input[name=emailEmpresa]').val(),
+    //         adress: $('input[name=direccion]').val(),
+    //         postal_code: $('input[name=cp]').val(),
+    //         country: $('select[name=pais]').val(),
+    //         province: $('input[name=provincia]').val(),
+    //         city: $('input[name=ciudad]').val(),
+    //         locality: $('input[name=localidad]').val(),
+    //         floor: $('input[name=piso]').val(),
+    //         ofice: $('input[name=oficina]').val(),
+    //         social_reason: $('input[name=razonSoc]').val(),
+    //         cuit: $('input[name=cuit]').val(),
+    //         company_img: $('input[name=companyImg]').val(),
+    //         owner_name: $('input[name=nomTitular]').val(),
+    //         owner_email: $('input[name=emailPersonalTit]').val(),
+    //         owner_dni: $('input[name=dniPersonalTit]').val(),
+    //         props: $('input[name=cuantasPropiedades]').val(),
+    //         services: $('select[name=servicios]').val(),
+    //         contracts: $('input[name=cuantosContratos]').val(),
+    //         web_site: $('input[name=urlIntegracion]').val(),
+    //         migrations: $('select[name=migraciones]').val(),
+    //         user_zonaprop: $('input[name=userZonaprop]').val(),
+    //         pass_zonaprop: $('input[name=passZonaprop]').val(),
+    //         user_mercadoL: $('input[name=userMercadolibre]').val(),
+    //         pass_mercadoL: $('input[name=passMercadolibre]').val(),
+    //         portals: $('input[name=portales]').val(),
+    //         portalZonaprop: $('input[name=portales]').val(),
+    //         portalMercadoL: $('input[type="checkbox"][name="mercadolibre"]:checked').val(),
+    //     },
+    //     beforeSend: function(){
+    //         advSave.hidden = true;
+    //         responseImg.src = "assets/loading.gif";
+    //     },
+    //     success: function(response) {
+    //         location.replace('http://127.0.0.1:8000/formularios/creacion/registered');
+    //         console.log(response)
+    //     },
+    //     error: function(response) {
+    //         responseImg.src = "";
+    //         responseTxt.hidden = false;
+    //     }
+    // });
     e.preventDefault();
 }
 

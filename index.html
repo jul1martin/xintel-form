@@ -17,134 +17,204 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-
 <div id="beginning">
-    <div class="card shadow mb-6" style="margin-top:50px;margin-bottom:127px; width:75%; margin-left:auto;margin-right:auto;">
-        <h1 class="text-center" style="margin-top:5%;font-weight: bold;" id="home">Formulario de ingreso | XINTEL</h1>
-        <p class="text-center" id="adv">Rellene todos los campos</p>
-        <div style="text-align:center;margin-top:40px;">
+    <header>
+        <img src="assets/logo.png" class="img-fluid" alt="Logo de Xintel" style="margin:25px; width: 100px;height: 50px;">
+    </header>
+    <div class="card shadow mb-6 form-card">
+        <h1 class="text-center initial" style="margin-top:5%;font-weight: bold;" id="home">Formulario de ingreso</h1>
+        <p class="text-center initial" id="adv">Rellene todos los campos.</p>
+        <p class="text-center initial" id="personalizedAdv" style="display:none;color: red"></p>
+        <div id="complete-step" style="text-align:center;margin-top:40px;" class="initial">
+            <span class="step"></span>
+            <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
         </div>
         <div class="card-body">
             <div class="form-container">
-                <form action="/new" method="POST" autocomplete="off" style="margin:0;" id="ingreso">
-                    <div class="row">
-                        <div class="col-md-8 mt-2">
+                <form action="" method="POST" autocomplete="off" style="margin:0;" id="ingreso" enctype="multipart/form-data">
+                    <div class="row"> 
+                        <div class="col-md-8 mt-2" >
                             <div class="tab">
-                                <p class="text-center" style="font-size: 25px;">Datos inmobiliaria</p>
-                                <div class="mb-2 input-form form-block">
-                                    <input type="text" name="nom_imb" autocomplete="organization-title" required>
-                                    <label alt="Label" data-placeholder="Nombre de la inmobiliaria"></label>
+                                <p class="text-center" style="font-size: 25px;">Datos de la inmobiliaria</p>
+                                <div class="mb-2 input-form form-block double-line-responsive mono-line-responsive-420 mono-line-responsive-1366 ">
+                                    <input type="text" name="nombreImb" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Nombre de la inmobiliaria"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block">
-                                    <input type="text" name="email_personal" autocomplete="email" required>
-                                    <label alt="Label" data-placeholder="Correo electronico personal"></label>
+                                <div class="mb-2 input-form form-block mono-line-responsive double-line-responsive-420">
+                                    <input type="text" name="emailPersonal" data-type="email" required>
+                                    <label  class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block">
-                                    <input type="text" name="email_empresa" autocomplete="email" required>
-                                    <label alt="Label" data-placeholder="Correo electronico de la empresa"></label>
+                                <div class="mb-2 input-form form-block double-line-responsive double-line-responsive-420 mono-line-responsive-1366 " >
+                                    <input type="text" name="emailEmpresa" data-type="email" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Correo electronico de la empresa"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block ">
-                                    <input type="text" name="direccion" autocomplete="street-address" required>
-                                    <label alt="Label" data-placeholder="Dirección"></label>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="razonSoc" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Razon social"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block ">
-                                    <input type="text" name="localidad" autocomplete="off" required>
-                                    <label alt="Label" data-placeholder="Localidad"></label>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="cuit" required>
+                                    <label class="label-input" alt="Label" data-placeholder="CUIT (Sin guiones)"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block ">
-                                    <input type="text" name="razon_soc" autocomplete="off" required>
-                                    <label alt="Label" data-placeholder="Razon social y CUIT"></label>
+                                <div class="mb-2 input-form form-block double-line-responsive mono-line-responsive-1280 mono-line-responsive-1366" >
+                                    <input type="text" name="companyImg" class=""  data-type="url" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Logo de la inmobiliaria (URL)"></label>
                                 </div>
-                                <div class="mb-2 input-form form-block">
-                                    <input type="text" name="titular" autocomplete="off" required>
-                                    <label alt="Label" data-placeholder="Datos del titular (Nombre completo, e-mail y teléfono)"></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <!-- <div class="col-md-4 division"></div> -->
-                    <div class="row">
-                        <div class="col-md-8 mt-2">             
-                            <div class="tab">
-                                
-                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Contratos</p>
-                                <div class="mb-2 input-form form-block">
-                                    <input name="cuantas_propiedades" type="number"   required>
-                                    <label data-placeholder="¿Cuántas propiedades tiene actualmente la empresa?" alt="Label"></label>
-                                </div>
-                                <div class="mb-2 input-form form-block">
-                                    <input name="cuantas_propiedades" type="number"`   required>
-                                    <label alt="Label" data-placeholder="¿Cuántos contratos tiene actualmente la empresa?"></label>
-                                </div>
-                                <div class="mb-2 select-form form-block">
-                                    <select class="" name="servicios" id="transformEstatic" required>
-                                        <option value="null">Sistemas que adquiere.</option>
-                                        <option value="Leasing">Xintel Leasing.</option>
-                                        <option value="admin_alquieres">Xintel Administracion de alquileres.</option>
-                                        <option value="ambos_servicios">Ambos sistemas.</option>
-                                    </select>  
-                                </div>
-                                <div class="mb-2 select-form form-block">
-                                    <select class="" name="pag_web" id="transformEstatic" required>
-                                        <option value="null">Pagina Web.</option>
-                                        <option value="Xinte_web">En proceso con Xintel.</option>
-                                        <option value="Integracion">Necesito integrarla.</option>
-                                        <option value="No_web">No utilizo.</option>
-                                    </select>  
-                                </div>
-                                <!-- ACA IRIA QUE SI NECESITA INTEGRARLA SE LA PEDIREMOS -->
-                                <div class="mb-2 select-form form-block">
-                                    <select class="" name="migraciones" id="transformEstatic" required>
-                                        <option value="null">Precisa realizar migraciones?</option>
-                                        <option value="No">No, las cargaremos manualmente.</option>
-                                        <option value="Si_zonaprop">Si, desde Zonaprop.</option>
-                                        <option value="Si_mercadolibre">Si, desde Mercado Libre.</option>
-                                    </select>  
-                                </div>
-                                <div class="mb-2 select-form form-block">
-                                    <label for="">Selecciona una opción (Apreta control + opcion que elijas)</label>
-                                    <select name="portales" id="" multiple required>
-                                        <option value="zonaprop">Zonaprop.</option>
-                                        <option value="argenprop">Argenprop.</option>
-                                        <option value="mercado_libre">Mercado Libre.</option>
-                                        <option value="ninguno">Ninguno de los anteriores.</option>
-                                    </select>
-                                </div>
+                                <!-- <div class="mb-2 input-form form-block">
+                                    <label id="labelFile" for="formFile" class="label-file label-input">Logotipo de la inmobiliaria en png o jpeg</label>
+                                    <input class="" name="companyImg" type="url" id="formFile" accept="image/png, image/jpeg" > 
+                                </div> -->
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 mt-2">             
                             <div class="tab">
-                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos de los usuarios a ingresar al panel</p>
-                                <div id="send">
-                                        <div class="mb-2 input-form form-block">
-                                        <input type="text" name="nom_user" autocomplete="name" required>
-                                        <label alt="Label" data-placeholder="Nombre completo"></label>
-                                        </div>
-                                        <div class="mb-2 input-form form-block">
-                                        <input type="text" name="email_personal_user" autocomplete="email" required>
-                                        <label alt="Label" data-placeholder="Correo electronico personal"></label>
-                                        </div>
-                                        <div class="mb-2 input-form form-block">
-                                        <input type="text" name="dni_user" autocomplete="off" required>
-                                        <label alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
-                                        </div>
+                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos sucursal central</p>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="direccion" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Dirección"></label>
                                 </div>
-                                <button type="button"  title="Añadir otro usuario" class="btn btn-plus" id="newUser"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                </svg></button>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="number" name="cp" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Codigo postal"></label>
+                                </div>
+                                <div class="mb-2 select-form form-block">
+                                    <label class="label-select" data-placeholder="" alt="Label">Pais</label>
+                                    <select class="" name="pais" required>
+                                        <option selected disabled value="">Elija una opcion</option>
+                                        <option value="Argentina">Argentina</option>
+                                        <option value="Uruguay">Uruguay</option>
+                                        <option value="Paraguay">Paraguay</option>
+                                    </select>  
+                                </div>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="provincia" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Provincia"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="ciudad" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Ciudad"></label>
+                                </div>                                
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="localidad" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Localidad"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="number" name="piso" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Piso"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                    <input type="text" name="oficina" required>
+                                    <label class="label-input" alt="Label" data-placeholder="Oficina"></label>
+                                </div>
                             </div>    
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 mt-2">             
+                            <div class="tab">
+                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Datos del titular</p>
+                                <div class="mb-2 input-form form-block mono-line-responsive">
+                                <input type="text" name="nomTitular" required>
+                                <label class="label-input" alt="Label" data-placeholder="Nombre completo"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block mono-line-responsive double-line-responsive-420">
+                                <input type="text" name="emailPersonalTit" data-type="email" required>
+                                <label class="label-input" alt="Label" data-placeholder="Correo electronico personal"></label>
+                                </div>
+                                <div class="mb-2 input-form form-block double-line-responsive mono-line-responsive-1366">
+                                <input type="number" name="dniPersonalTit" data-type="dni" required>
+                                <label class="label-input" alt="Label" data-placeholder="Documento Nacional de Identidad"></label>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 mt-2">             
+                            <div class="tab">
+                                <p class="text-center" style="margin-top:1%;font-size: 25px;">Sistemas e integraciones</p>
+                                <div class="mb-2 input-form form-block double-line-responsive tri-line-responsive-420">
+                                    <input name="cuantasPropiedades" type="number" required>
+                                    <label class="label-input" data-placeholder="¿Cuántas propiedades tiene actualmente la empresa?" alt="Label"></label>
+                                </div>
+                                <div class="mb-2 select-form form-block">
+                                    <label class="label-select" data-placeholder="" alt="Label">Sistemas que adquiere</label>
+                                    <select class="" name="servicios" id="dinamicSelectAlquileres" required>
+                                        <option selected disabled value="">Elija una opcion</option>
+                                        <option value="XintelWeb">Xintel Leasing</option>
+                                        <option value="Administracion de alquileres">Xintel Administracion de alquileres</option>
+                                        <option value="ambos_servicios">Ambos sistemas</option>
+                                    </select>  
+                                </div>
+                                <div class="mb-2 input-form form-block double-line-responsive tri-line-responsive-420" id="dinamicHiddenAlquileres" hidden="">
+                                    <input name="cuantosContratos" type="number" id="dinamicInputAlquileres" required>
+                                    <label class="label-input" alt="Label" data-placeholder="¿Cuántos contratos tiene actualmente la empresa?"></label>
+                                </div>
+                                <div class="mb-2 select-form form-block">
+                                    <label class="label-select" data-placeholder="" alt="Label">¿Tiene Pagina Web?</label>
+                                    <select class="" name="pagWeb" id="dinamicSelect" required>
+                                        <option selected disabled value="">Elija una opcion</option>
+                                        <option value="xintel_web">En proceso con Xintel.</option>
+                                        <option value="integracion">Necesito integrarla.</option>
+                                        <option value="">No utilizo.</option>
+                                    </select>  
+                                </div> 
+                                <div class="mb-2 input-form form-block double-line-responsive mono-line-responsive-800 mono-line-responsive-1366" id="dinamicHidden" hidden="">
+                                    <input type="text" name="urlIntegracion" date-type="url" id="dinamicInputIntegration" required > 
+                                    <label class="label-input" alt="Label" data-placeholder="Ingrese la URL de su pagina Web."></label>
+                                </div>
+                                <div class="mb-2 select-form form-block">
+                                    <label class="label-select" data-placeholder="" alt="Label">¿Precisa realizar migraciones?</label>
+                                    <select class="" name="migraciones" id="migraciones" required>
+                                        <option selected disabled value="">Elija una opcion</option>
+                                        <option value="no">No, las cargaremos manualmente</option>
+                                        <option value="Zonaprop">Si, desde Zonaprop</option>
+                                        <option value="Mercadolibre">Si, desde Mercado Libre</option>
+                                    </select>  
+                                </div>
+                                <div id="integrations"></div>
+
+                                <div class="mb-2 input-form form-block">
+                                    <div class="select-field">
+                                        <label class="label-select" data-placeholder="" alt="Label">¿En qué portales publica actualmente la empresa?</label>
+                                        <input type="text" name="portales"  placeholder="" id="checkbox" class="input-select" readonly>
+                                        <span class="down-arrow">&blacktriangledown;</span>
+                                    </div>
+                                    <div class="list">
+                                        <label for="Zonaprop" class="task">
+                                            <input type="checkbox" value="Zonaprop" name="Zonaprop" class="inputCheckbox"> Zonaprop
+                                        </label>
+                                        <label for="Argenprop" class="task">
+                                            <input type="checkbox" value="Argenprop" name="Argenprop" class="inputCheckbox"> Argenprop
+                                        </label>
+                                        <label for="MercadoLibre" class="task">
+                                            <input type="checkbox" value="Mercado Libre" name="MercadoLibre" class="inputCheckbox"> Mercadolibre
+                                        </label>
+                                        <label for="Infocasas" class="task">
+                                            <input type="checkbox" value="Infocasas" name="Infocasas" class="inputCheckbox"> Infocasas
+                                        </label>
+                                        <label for="Gallito" class="task">
+                                            <input type="checkbox" value="Gallito" name="Gallito" class="inputCheckbox"> El gallito
+                                        </label>
+                                        <label for="Buscadorprop" class="task">
+                                            <input type="checkbox" value="Buscadorprop" name="Buscadorprop" class="inputCheckbox"> Buscadorprop
+                                        </label>
+                                        <label for="otros" class="task">
+                                            <input type="checkbox" value="Otros" name="Other_portal" class="inputCheckbox"> Otros
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div style="overflow:auto; margin: 50px 25px 25px 0px;" >
                         <div style="float:right;">
-                            <a href="#beginning"><button type="button"  class="btn btn-prevBtn" id="prevBtn" onclick="nextPrev(-1)">Anterior</button></a>
-                            <a href="#beginning"><button type="button" class="btn btn-nextBtn" id="nextBtn" onclick="nextPrev(1)">Siguiente</button></a>
+                            <a href="#beginning"><button type="button"  class="btn btn-gray" id="prevBtn">Anterior</button></a>
+                            <a href="#beginning"><button type="button" class="btn btn-green" id="nextBtn">Siguiente</button></a>
                         </div>
                     </div>
                 </form>
@@ -153,34 +223,30 @@
     </div>
 </div>
 
-<!-- <div class="modal fade" id="nuevoUsuario" index="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Usuarios</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="nuevoUsuarioForm" action="" method="POST">
-                    @csrf
-                    <div class="row">
-                        <div class="col-xl-12 mb-2">
-                            
+<div class="modal fade" id="modalSave" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="shadow-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cargar empresa.</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div id="advSave">
+                        <p>¿Está seguro en terminar el formulario?</p>
+                        <p>Por favor cersiorarse en que esten todos los datos correctamente.</p>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button id="" form="" style="margin: 0 auto;" type="submit" class="btn btn-success">Cargar usuarios.</button>
+                    <img src="" alt="" id="resultadoImg">
+                    <p id="resultadoTxt" hidden="true">Error! Por favor, revisa haber colocado los datos correctos (E-mail completo, formato de datos pedidos)</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#beginning"><button type="button" class="btn btn-gray" id="cancelSubmit"  data-bs-dismiss="modal" aria-label="Close">Cancelar</button></a>
+                    <a href="#beginning"><button  type="button" class="btn btn-green" id="saveCompany"form="ingreso">Subir</button></a>
+                </div>
             </div>
         </div>
     </div>
-</div> -->
-<footer class="bg-primary">
-    <img src="assets/logo.png" class="img-fluid" alt="Logo de Xintel" style="margin:25px;">
-</footer>
-
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
@@ -193,7 +259,11 @@
     $(function() {
     $('[data-toggle="popover"]').popover()
     })
-    
+
+    document.querySelector('.select-field').addEventListener('click',()=>{
+        document.querySelector('.list').classList.toggle('show');
+        document.querySelector('.down-arrow').classList.toggle('rotate180');
+    });
 </script>
 <script src="form.js"></script>
 </body>
